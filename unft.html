@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-NFT</title>
+    <!-- 페이지 meta태그 -->
+    <meta name=”description” content=”페이지 설명”>
+    <meta name=”keywords” content=”페이지에,들어간,키워드,단어로,입력,구분은,쉼표로”>
+    <meta property="og:site_name" content="The Rock" />
+    <meta property="og:title" content="The Rock Content" />
+    <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />	
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 페이지별 css 추가 -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+</head>
+<body>
+    <header class="header_sticky">
+        <div class="container">
+            <nav>
+                <div class="flex">
+                    <div class="navbar_logo">
+                        <a href="/">
+                            <img src="/static/images/logo.png" alt="unftlogo" />
+                        </a>
+                    </div>
+                    <div class="navbar_nav flex w-100">
+                        <ul class="navbar_menu nav-left">
+                            <li class="navbar_item">
+                                <a href="#">
+                                    U-NFT 생성
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar_menu nav-right">
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    <div class="my_money">
+                                        <i class="bi bi-wallet2"></i>
+                                        <p>
+                                            <span class="money"> 1,000,000 </span> USD
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    USERNAME
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="#" onclick="handleLogout()">
+                                    SIGNOUT
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="wrap">
+        <div class="container">
+            <section class="sec sec_unft_detail mt-5">
+                <div class='unft_card item_card item_detail_card'>
+                    <div class="card_header list_profile">
+                        <div class="unft_images item_image">
+                            <img aria-hidden="false" draggable="false" loading="lazy" src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                        </div>
+                        <span class="unft_card_status">판매중</span>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_content">
+                            <div class="unft_card_title item_card_title">
+                                <span class="title">Today's Top Hits</span> <span class="id">#1234</span>
+                            </div>
+                            <div class="item_card_editors flex">
+                                <p class="unft_card_creator item_card_editor"><img class="editor_profile" src="/static/images/default_profile.png"/><span class="creator">Rihanna</span></p>
+                                <p class="unft_card_owner item_card_editor"><span class="owner_field">소유자</span> <span class="owner">Rihanna</span></p>
+                            </div>
+                            <div class="item_card_hits">
+                                <i class="bi bi-eye-fill"></i>
+                                <p class="hits_text"><span class="hits">0</span> 조회</p>
+                            </div>
+                        </div>
+                        <div class="card_footer">
+                            <p>마지막 거래가</p>
+                            <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                            <button type="button" class="btn btn_default btn_deal_modal"> <i class="bi bi-wallet2"></i> 가격 제안하기 </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="sec sec_unft_detail_tab">
+                <div class="tab_menu">
+                    <ul class="tab_list">
+                        <li class="tab_item active"><a href="#tab_01">상세정보</a></li>
+                        <li class="tab_item"><a href="#tab_02">거래내역</a></li>
+                        <li class="tab_item"><a href="#tab_03">가격제안</a></li>
+                    </ul>
+                </div>
+                <div class="tab_body">
+                    <div class="tab_content unft_card_desc" id="tab_01">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui odio error amet perspiciatis mollitia cupiditate consequuntur sit ipsum culpa quisquam alias, facere, delectus, vero aspernatur ea eaque a cum. Alias.</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate nesciunt cumque, repudiandae quae id eius veritatis consequatur labore sunt, vero laudantium unde suscipit quasi consectetur rem neque culpa rerum quam eveniet error dolore? Unde maxime voluptas hic optio ea? Molestiae suscipit beatae, impedit non eaque similique, odio maiores possimus est quaerat aut sapiente facere laudantium tempora nesciunt sunt! Rerum ad provident vero blanditiis dolore corporis sequi culpa, eveniet aspernatur et deleniti quam iusto, tenetur ut commodi porro ipsum laudantium, consectetur tempore tempora esse minus. Praesentium a vitae asperiores perferendis quasi ducimus incidunt aperiam totam sint quas, aspernatur perspiciatis possimus voluptates animi repellendus doloribus odit quibusdam ea nulla sunt pariatur autem. Recusandae eius quisquam amet, omnis quis maxime, odio facere, eveniet facilis consequuntur hic deleniti ex distinctio excepturi officiis corporis suscipit. Commodi ducimus culpa hic libero reiciendis aperiam officia magni, amet id inventore assumenda exercitationem architecto eius iure praesentium itaque dolores ratione incidunt a non nobis? Repudiandae quo nulla cum, qui sequi in quasi maiores architecto, rem odit iste. Molestias, rem incidunt voluptate repellat totam error tenetur sequi aliquid non? Amet ex natus doloribus aliquid, exercitationem eligendi, a eveniet ratione iusto in, illum omnis corporis fugiat ullam? Corrupti autem alias libero sint debitis qui, temporibus, saepe tempora sed explicabo ex quo quasi, suscipit quod porro perferendis? Voluptatum, deserunt reiciendis recusandae vitae molestiae eos nam, tenetur corporis, sed maiores dolorem? Doloremque delectus, rem deserunt eaque sed distinctio sunt dolore consectetur, voluptates autem nam nesciunt fuga ullam cumque, ipsum at architecto error recusandae dignissimos! Explicabo tenetur id molestiae numquam necessitatibus ratione ipsam aut fugiat quibusdam excepturi velit facere quod quia veritatis totam exercitationem, atque eligendi quae minima praesentium deserunt facilis incidunt porro laudantium. Laborum vel, ea soluta alias adipisci quaerat error voluptatum voluptate aliquid, ullam quisquam. Voluptate ullam, facilis provident, suscipit corrupti quam culpa sunt voluptatibus cum illum ipsa maiores ad alias maxime totam. At mollitia debitis est fugiat, dolores voluptates sed ab? Non eum repudiandae, error atque vel assumenda eligendi eos eius nulla deserunt. Eum repellat similique perferendis aspernatur, iusto rerum libero reprehenderit alias itaque nesciunt suscipit ipsam aliquid quidem, molestiae amet nisi dolorum officiis explicabo aut dicta ea quo! Fuga ut, suscipit perferendis velit amet maiores maxime fugit neque quisquam illum saepe minima possimus, laudantium perspiciatis facilis voluptate. Nihil quos rem repellat sed. Nemo, modi. Sunt atque vitae iusto reiciendis velit aut eveniet! Omnis ipsum suscipit eaque, nobis temporibus cumque quos dolores voluptas maiores illum tenetur libero accusantium quaerat a consectetur quia id mollitia sit minus! Eius tempore in velit, impedit fugit accusantium aliquam labore? Veniam sunt distinctio culpa nulla voluptate fugit, quaerat ipsa ipsam, tempora ad magni laudantium tempore quis, ea quam! Molestiae quam consequuntur quos sint! Accusantium hic recusandae impedit incidunt pariatur earum illo aperiam atque ipsum ab in dolore et animi, deleniti necessitatibus vel a quam, perspiciatis reprehenderit tempora, ea saepe numquam illum. Dolores soluta recusandae harum, ipsam sit velit possimus at quis aperiam omnis optio ipsum veritatis doloremque impedit nemo, eum neque officiis accusantium. Ipsam est assumenda minima quam voluptatum. Quaerat modi eligendi officia esse distinctio commodi possimus voluptatibus veniam ut, illo omnis quia dolor repudiandae voluptates eum similique nemo natus deserunt velit ipsa maxime. Vero deserunt aut nostrum voluptatum, laborum dolorem suscipit modi soluta harum recusandae, enim inventore reprehenderit eius, pariatur aliquid beatae sit quo illo sapiente! Ullam sint inventore similique, rem accusantium vitae reprehenderit. Ipsam nisi id ad natus reiciendis, a doloremque, illo exercitationem laboriosam aut, nostrum officia temporibus assumenda! A in veniam commodi ipsa sed maiores culpa amet tempore cupiditate quae sequi fugit ex praesentium fugiat harum officia, nostrum similique quasi accusantium. Tempore ipsum quasi sunt minima ab quae ut commodi qui iure, debitis distinctio tenetur, deleniti porro sequi nam et fuga, vero quod dicta iste? Officiis aliquid consectetur nesciunt quas, ex magni facere pariatur, adipisci et omnis ratione excepturi quaerat voluptas quibusdam. Blanditiis sit dicta optio iusto mollitia harum fugiat nesciunt cumque reprehenderit, alias debitis error quis maiores, voluptatibus saepe fugit quos ipsam magni. Eveniet nisi saepe excepturi, porro distinctio, animi ipsam eum tenetur necessitatibus placeat corporis veniam. Rem eveniet fugit a impedit aspernatur numquam consequuntur enim iusto labore. Libero consectetur, mollitia fuga, tenetur qui magnam tempore quas, doloremque minima impedit hic facilis. Doloremque labore quas repellendus non, numquam, ipsum voluptates cupiditate nam sunt animi obcaecati perferendis, velit debitis laboriosam? Possimus nemo sit eaque architecto deleniti ratione nostrum adipisci hic, fugiat quas eos nihil fuga, recusandae magni repudiandae odio aliquid! Magni velit dolorem a. Obcaecati optio magnam laboriosam voluptas placeat id vel laudantium repellat assumenda doloremque facilis at ab tenetur, voluptatibus ducimus. Illum a distinctio rerum eius. Culpa possimus, quam explicabo sequi voluptate ab praesentium atque nisi modi voluptatem repellendus labore quis quaerat repellat rem illo! Saepe sint magnam mollitia, hic maxime ipsum quo magni consequuntur minus culpa vitae eius nisi similique iusto in ut nihil animi explicabo error corrupti voluptate. Ipsum et deleniti est eius impedit consequatur deserunt, natus nobis laborum sint tempore dolorum blanditiis, quae eveniet. Consectetur, ad repellat sunt perspiciatis minus esse adipisci inventore voluptatibus vel? Nulla obcaecati, deserunt voluptate est reiciendis doloremque accusantium! Architecto ipsam dolorem minus reprehenderit id veritatis blanditiis doloremque necessitatibus ab porro aliquam iusto cumque sunt mollitia inventore eos numquam, sit voluptatibus molestiae maxime ipsa accusantium maiores iste expedita! Id dolore incidunt itaque eos. Cumque dignissimos velit commodi laboriosam, sit natus eveniet libero beatae nulla similique, fugiat quibusdam officiis. A voluptatibus debitis illo eius, molestiae, repellendus non, necessitatibus ad optio delectus vero saepe possimus dolorum doloremque obcaecati impedit. Expedita quae facilis iure! Quis labore nemo officiis fugiat corrupti veniam dolore accusantium explicabo, maxime beatae nam deleniti pariatur soluta distinctio sit illum numquam ipsum quisquam cumque adipisci nesciunt recusandae! Provident, illo. Nam cum quaerat accusantium odit beatae perspiciatis illum ullam? Exercitationem perferendis iure repudiandae ipsam error, voluptas culpa veritatis eaque doloremque illum itaque ab. Quia iste quod nemo. Quis voluptates cum tenetur totam nemo exercitationem, fugit adipisci officiis, perspiciatis ab similique suscipit aperiam pariatur deleniti voluptatum illum repellendus hic consequuntur fugiat itaque, harum inventore quidem magni? Placeat.</p>
+                    </div>
+                    <div class="tab_content unft_card_dealAll" id="tab_02">
+                        <div class="tab_title">
+                            <h3>최근 제안내역</h3>
+                        </div>
+                        <div class="table table_dealAll">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="th">
+                                        <span>제안일자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>상태</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안금액</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tbody">
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_content unft_card_dealSuccess" id="tab_03">
+                        <div class="tab_title">
+                            <h3>거래내역</h3>
+                        </div>
+                        <div class="table table_dealSuccess">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="th">
+                                        <span>제안일자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>from</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>to</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>거래금액</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tbody">
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="/static/js/detailAPI.js"></script>
+</body>
