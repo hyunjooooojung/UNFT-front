@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-NFT</title>
+    <!-- 페이지 meta태그 -->
+    <meta name=”description” content=”페이지 설명”>
+    <meta name=”keywords” content=”페이지에,들어간,키워드,단어로,입력,구분은,쉼표로”>
+    <meta property="og:site_name" content="The Rock" />
+    <meta property="og:title" content="The Rock Content" />
+    <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />	
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="static/js/logout.js"></script>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 페이지별 css 추가 -->
+    <link rel="stylesheet" href="/static/css/signin.css">
+</head>
+<body>
+    <header class="header_sticky">
+        <div class="container">
+            <nav>
+                <div class="flex">
+                    <div class="navbar_logo">
+                        <a href="/">
+                            <img src="/static/images/logo.png" alt="unftlogo" />
+                        </a>
+                    </div>
+                    <div class="navbar_nav flex w-100">
+                        <ul class="navbar_menu nav-left">
+                            <li class="navbar_item">
+                                <a href="#">
+                                    U-NFT 생성
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar_menu nav-right">
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    <div class="my_money">
+                                        <i class="bi bi-wallet2"></i>
+                                        <p>
+                                            <span class="money"> 1,000,000 </span> USD
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    USERNAME
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="#" onclick="handleLogout()">
+                                    SIGNOUT
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="wrap">
+        <section class="sec_signin">
+            <div class="container_main">
+                <div class="signin_content">
+                    <h2 class="signin_title">U-NFT 로그인</h2>
+                </div>
+                <div class="input_box">
+                    <h3 class="input_title">이메일 주소*</h3>
+                    <div class="input_email_item">
+                        <input type="text" placeholder="예) unft@unft.co.kr" class="input_txt">
+                    </div>
+                </div>
+                <div class="input_box">
+                    <h3 class="input_title">비밀번호*</h3>
+                    <div class="input_password_item">
+                        <input type="text" placeholder="영문 대소문자, 숫자, 특수문자 조합 8-20자" class="input_txt">
+                    </div>
+                </div>
+
+                <a disabled="disabled" href="#" class="btn btn_signin text-black full solid disabled"> 로그인 </a>
+
+                <ul class="look_box">
+                    <li class="look_list">
+                        <a href="/signup" class="look_link"> 회원가입 </a>
+                    </li>
+                    <li class="look_list">
+                        <a href="/login/find_password" class="look_link"> 비밀번호 찾기 </a>
+                    </li>
+                    <li class="look_list">
+                        <a href="/index" class="look_link"> 메인화면으로 </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <footer>
+
+    </footer>
+</body>
