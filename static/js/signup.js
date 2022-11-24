@@ -38,6 +38,11 @@ async function handleSignup() {
     else if (!password_check(password)){
 		alert("비밀번호는 8-20자이며 최소 하나 이상의 영문자, 숫자, 특수문자가 필요합니다!");
 	}
+    else if (!agree.checked) {
+        alert("약관 동의 체크는 필수입니다!");
+        agree.focus();
+        return false;
+    }
     else {
         const response = await fetch("http://127.0.0.1:8000/users/signup/", {
             headers: {
