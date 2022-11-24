@@ -4,7 +4,9 @@
 * {
     font-family: 'Noto Sans KR', sans-serif !important;
 }
-
+body{
+    color: #222;
+}
 .flex{
     display: flex;
 }
@@ -30,6 +32,7 @@ header.header_sticky{
     box-shadow: 0 0 8px rgb(255 255 255 / 5%);
     /* border-bottom: 1px solid #e5e7eb; */
     font-weight: 600;
+    font-size: 1.1em;
 }
 
 header nav{
@@ -69,7 +72,7 @@ header nav ul.navbar_menu > li .dropdown-toggle::after{
 }
 header nav .my_money{
     border: solid 1px #7E50FF;
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #7E50FF;
     display: flex;
     justify-content: space-between;
@@ -151,43 +154,68 @@ header nav .my_profile img{
     transition: 0.2s;
 }
 
-/* music_card */
-.music_card{
+
+/* card_list */
+
+/* ********* */
+/* item_card */
+/* ********* */
+.item_card{
     cursor: pointer;
-    background: #181818;
-    /* border: solid 1px rgb(219, 219, 219); */
-    border-radius : 8px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+    border-radius : 16px;
     margin-bottom: 16px;
     line-height: 1.26;
     overflow: hidden;
-    padding: 16px;
-    transition: 0.4s;
-
+    /* padding: 16px; */
 }
-.music_card:hover{
-    /* box-shadow: 2px 5px 10px rgba(0,0,0,0.1); */
-    transition: 0.4s;
-    background-color: #282828;
+/* card_header */
+.item_card .card_header{
+    position: relative;
 }
-.music_card .card_header{
-    margin-bottom: 16px;
-    border-radius: 8px;
+.item_card .unft_card_status{
+    position: absolute;
+    top: 10px;
+    background-color: #7E50FF;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    left: 10px;
+}
+.item_card .item_image{
+    vertical-align: unset;
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
     overflow: hidden;
 }
-.music_card .music_album_images{
-    vertical-align: unset;
+.item_card .item_image >img{
+    position: absolute;
+    /* width: 100%; */
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
 }
-.music_card .music_album_images >img{
+.item_card:hover .item_image img{
+    transform: scale(1.2) translate(-40%,-40%);
+    transition: all .2s ease-in-out;
+}
+/* card_content */
+.item_card .card_content{
     width: 100%;
-    height: auto;
+    padding: 15px;
 }
-.music_card .card_content{
-    width: 100%;
-}
-.music_card .card_content p{
+.item_card .card_content p{
     margin-bottom: 8px;
 }
-.music_card .card_content p.music_card_title{
+.item_card .card_content p.item_card_title{
     overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
@@ -196,94 +224,45 @@ header nav .my_profile img{
     -webkit-box-orient: vertical;
     /* word-break: keep-all; */
 }
-.music_card .card_content .music_card_title{
+.item_card .card_content .item_card_title{
     font-weight: 600;
     font-size : 1em;
 }
-.music_card .card_content .music_card_artist{
-    color: #a7a7a7;
-    font-size: 0.8em;
+.item_card .card_content .item_card_editor{
+    font-size: 0.75em;
 }
-.music_card .card_content .music_card_grade{
-    color: #1ED760
-}
-
-
-
-/* profile_list_card  */
-.profile_image{
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: block;
-    flex: 0 0 auto;
-    overflow: hidden;
-    position: relative;
-    max-width: 64px;
-    max-height: 64px;
-}
-.profile_image>img{
-    width: 100%;
-    object-fit: cover;
-}
-.profile_list_card{
+/* card_footer */
+.item_card .card_footer{
+    padding: 16px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
-    transition: 0.2s;
-    cursor: pointer;
-}
-.opcity7{
-    opacity: 0.7;
-}
-.profile_list_card.opcity7:hover{
-    opacity: 1;
-    transition: 0.2s;
-}
-.profile_list_card .card_body{
-    width: 100%;
-    display: flex;
     align-items: center;
+    position: relative;
+    font-size: 0.75em;
 }
-.profile_list_card .profile_image{
-    max-width: 30px;
-    max-height: 30px;
+.item_card .card_footer::before{
+    content: "";
+    display: block;
+    width: calc(100% - 32px);
+    height: 1px;
+    background: #f0f0f0;
+    position: absolute;
+    top: 0;
+    left: 16px;
 }
-.profile_list_card .profile_meta{
-    width: 100%;
-    padding-left: 12px ;
-    line-height: 1.36;
-    font-size: 0.9em;
+.item_card .card_footer .unft_card_price{
+    color: #7e50ff;
+    font-size: 1.2em;
 }
-.profile_list_card .btn_follow{
-    color: #1ED760;
+.item_card .card_footer .unft_card_price .price{
+    font-size: 1.5em;
+    font-weight: 500;
 }
-.profile_list_card .btn_follow_2{
-    color: #000;
-    background: #1ED760;
-    border : solid 1px #1ED760;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 0.8em;
-    text-align: center;
-    min-width: 75px;
-    display: inline-block;
-}
-.profile_list_card .btn_follow_2.btn_following{
-    color: #fff;
-    background: #a7a7a7;
-    border : solid 1px #a7a7a7;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 0.8em;
-}
-.profile_list_card .btn_follow_remove{
-    color: #fff;
-    border : solid 1px #fff;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 0.8em;
-    text-align: center;
-    min-width: 75px;
-    display: inline-block;
+
+
+@media (max-width: 991px){
+    .container, .container-md, .container-sm{
+        max-width: 100%;
+        padding: 32px;
+    }
 }
