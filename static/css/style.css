@@ -21,6 +21,17 @@ a, a:hover{
     text-decoration: unset;
 }
 
+.btn.btn_default{
+    background-color: #7E50FF;
+    color: #fff;
+    width: 50%;
+    padding: 10px 16px;
+}
+.btn.btn_default:hover{
+    background-color: #682EEF;
+    color: #fff;
+}
+
 /* header */
 header.header_sticky{
     background: #fff;
@@ -203,7 +214,7 @@ header nav .my_profile img{
     left:50%;
     transform: translate(-50%,-50%);
 }
-.item_card:hover .item_image img{
+.item_card:hover .item_image.scale_up img{
     transform: scale(1.2) translate(-40%,-40%);
     transition: all .2s ease-in-out;
 }
@@ -258,6 +269,42 @@ header nav .my_profile img{
     font-size: 1.5em;
     font-weight: 500;
 }
+
+
+/* ******** */
+/* tab_menu */
+/* ******** */
+.tab_menu{
+    border-bottom: solid 1px #f0f0f0;
+}
+.tab_menu .tab_list{
+    display: flex;
+}
+.tab_menu .tab_list .tab_item{
+    margin: 16px 32px;
+    font-size: 1.25em;
+    font-weight: 500;
+    position: relative;
+}
+.tab_menu .tab_list .tab_item:hover{
+    font-weight: 600;
+    transition: 0.2s;
+}
+.tab_menu .tab_list .tab_item.active{
+    font-weight: 600;
+}
+.tab_menu .tab_list .tab_item.active::after{
+    content: "";
+    position: absolute;
+    left:0;
+    bottom: -17px;
+    width: 100%;
+    height: 3px;
+    background-color: #222;
+
+}
+
+
 
 
 @media (max-width: 991px){

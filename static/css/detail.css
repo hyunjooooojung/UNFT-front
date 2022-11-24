@@ -1,0 +1,133 @@
+.item_detail_card{
+    display: flex;
+    border: 0;
+    border-radius: 0;
+    box-shadow: unset;
+}
+
+.item_detail_card .card_header{
+    width: 50%;
+    margin-right: 32px;
+}
+.item_detail_card .card_header .unft_images{
+    border-radius: 16px;
+    overflow: hidden;
+}
+.item_detail_card .card_body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.item_detail_card .card_body .item_card_title{
+    font-size: 2.5em;
+    font-weight: 900;
+    margin-bottom: 16px;
+}
+.item_detail_card .card_body .item_card_editors{
+    margin-bottom: 8px;
+}
+.item_detail_card .card_body .item_card_editor{
+    font-size: 1em;
+    font-weight: 500;
+    color: #7E50FF;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.item_detail_card .card_body .item_card_editor .editor_profile{
+    border-radius: 50%;
+    width: 1.75em;
+    height: 1.75em;
+    display: block;
+    margin-right: 12px
+}
+.item_detail_card .card_body .item_card_editor .owner_field{
+    display: block;
+    font-weight: normal;
+    margin-right: 12px;
+    color: #888888;
+}
+.item_detail_card .card_body .item_card_hits{
+    color: #888888;
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.item_detail_card .card_body .item_card_hits i{
+    margin-right: 8px;
+}
+.item_detail_card .card_body .item_card_hits .hits_text{
+    font-size: 0.7em;
+    margin-bottom:0;
+}
+.item_detail_card .card_footer{
+    display: block;
+    font-size: 1em;
+    padding-bottom:0;
+    
+}
+.item_detail_card .card_footer::before{
+    display: none;
+}
+.item_detail_card .card_footer > *{
+    margin-bottom: 8px
+}
+.item_detail_card .card_footer .unft_card_price{
+    color: #7E50FF;
+    margin-bottom: 32px;
+}
+
+
+/* sec_unft_detail_tab */
+.tab_body{
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tab_content{
+    padding: 32px 16px;
+}
+.tab_title{
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+.unft_card_desc{
+    line-height: 1.75;
+    word-break: keep-all;
+    color: #666;
+    width: 100%;
+}
+.unft_card_desc p{
+    margin-bottom: 16px;
+}
+.unft_card_dealAll, .unft_card_dealSuccess{
+    width: 50%;
+}
+.table .thead{
+    border-bottom: solid 2px #eaeaea;
+    font-weight: 500;
+    padding-right: 15px;
+}
+.table .tbody{
+    height: 300px;
+    overflow-y: scroll;
+
+}
+.table .tr{
+    display: flex;
+}
+.table .tr .th{
+    color: #222 !important;
+}
+.table .tr .th,.table .tr .td{
+    width: 100%;
+    padding: 16px 0;
+    color: #666;
+    text-align: center;
+}
+.table_dealAll.table .tr .th:nth-child(3),.table_dealAll.table .tr .td:nth-child(3){
+    flex : 0 0 70px;
+}
