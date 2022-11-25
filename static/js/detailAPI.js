@@ -41,7 +41,9 @@ function append_unft_card_detail(data){
     element.querySelector(".id").innerText = "#"+data['id']
     element.querySelector(".hits").innerText = data['hits']
     element.querySelector(".owner").innerText = data['owner']
+    element.querySelector(".owner").parentElement.setAttribute("href","/profile.html?username="+data['owner'])
     element.querySelector(".creator").innerText = data['creator']
+    element.querySelector(".creator").parentElement.setAttribute("href","/profile.html?username="+data['creator'])
     element.querySelector(".item_image img").setAttribute('src', 'http://127.0.0.1:8000'+data['result_image']+'/')
 
     if(data['status']){
