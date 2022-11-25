@@ -2,15 +2,7 @@
 function email_check(email) {
 	var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	return reg.test(email);
-
 }
-
-// 패스워드 형식 확인을 위한 정규식 체크
-function password_check(password) {
-    var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    return reg.test(password);
-}
-
 
 async function handleSignin() {
 
@@ -23,9 +15,6 @@ async function handleSignin() {
     }
     else if (!email_check(email)){
 		alert("이메일 형식에 맞게 입력해주세요!");
-	}
-    else if (!password_check(password)){
-		alert("비밀번호는 8-20자이며 최소 하나 이상의 영문자, 숫자, 특수문자가 필요합니다!");
 	}
     else {
         const response = await fetch("http://127.0.0.1:8000/users/signin/", {
@@ -58,7 +47,12 @@ async function handleSignin() {
             
             alert("로그인 되었습니다.")
             location.href = "http://127.0.0.1:5500/index.html";
-        } else {
+        } 
+        // 회원가입 할 때 입력한 비밀번호와 일치 하지 않을 경우
+        else if (response.status == 401) {
+            alert("비밀번호가 일치하지 않습니다!");
+        }
+        else {
             alert("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요!");
             console.warn(`${response.status} 에러가 발생했습니다.`);
         }

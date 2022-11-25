@@ -14,6 +14,7 @@ async function handleCreateUnft() {
   const price = document.getElementById("price").value;
   const fileField = document.querySelector('input[type="file"]').files[0];
 
+
   unft_formData.append("title",title);
   unft_formData.append("desc",desc);
   unft_formData.append("status",status);

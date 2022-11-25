@@ -84,6 +84,7 @@
 .btn{
     background-color: #7E50FF;
     color: #fff;
+    margin-right: 20px;
 }
 
 .btn:hover{
@@ -91,6 +92,10 @@
     color: #fff;
 }
 
+.floating_form {
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 
