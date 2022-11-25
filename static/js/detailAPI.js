@@ -8,7 +8,6 @@ function getParams(params){
     const get_urlParams = urlParams.get(params);
     return get_urlParams;
 }
-
 async function handleUnftDetail(){
      // url이 ?q="unft=1" 형태로 입력되지 않았을 때 에러메세지 출력
     url_param = getParams("unft");
@@ -20,6 +19,7 @@ async function handleUnftDetail(){
             "content-type": "application/json",
             // "Authorization":"Bearer " + localStorage.getItem("access")
         },
+        credentials: "include",
         method:'GET',
     }).then(response => {
         if(!response.ok){
@@ -28,7 +28,6 @@ async function handleUnftDetail(){
         return response.json()
     }).then(result => {
         const response_json = result;
-        console.log(response_json)
         append_unft_card_detail(response_json)
         // let unft_card_list = document.getElementById("unft_card_list").querySelector(".row")
         // append_unft_card_list(response_json,unft_card_list)
