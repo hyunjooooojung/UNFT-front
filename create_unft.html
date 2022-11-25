@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-NFT</title>
+    <!-- 페이지 meta태그 -->
+    <meta name=”description” content=”페이지 설명”>
+    <meta name=”keywords” content=”페이지에,들어간,키워드,단어로,입력,구분은,쉼표로”>
+    <meta property="og:site_name" content="The Rock" />
+    <meta property="og:title" content="The Rock Content" />
+    <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />	
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 페이지별 css 추가 -->
+    <link rel="stylesheet" href="/static/css/create_unft.css">
+</head>
+<body>
+    <header class="header_sticky">
+        <div class="container">
+            <nav>
+                <div class="flex">
+                    <div class="navbar_logo">
+                        <a href="/">
+                            <img src="/static/images/logo.png" alt="unftlogo" />
+                        </a>
+                    </div>
+                    <div class="navbar_nav flex w-100">
+                        <ul class="navbar_menu nav-left">
+                            <li class="navbar_item">
+                                <a href="#">
+                                    U-NFT 생성
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar_menu nav-right">
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    <div class="my_money">
+                                        <i class="bi bi-wallet2"></i>
+                                        <p>
+                                            <span class="money"> 1,000,000 </span> USD
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="/profile.html">
+                                    USERNAME
+                                </a>
+                            </li>
+                            <li class="navbar_item">
+                                <a href="#" onclick="handleLogout()">
+                                    SIGNOUT
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="wrap">
+        <section class="sec create_unft">
+            <div class="container_create_main">
+                <div class="create_content">
+                    <h1 class="create_title">U-NFT 생성하기</h1>
+                    <h2>👇🏻 아래 빈 칸에 두 가지의 이미지를 드래그해서 업로드해주세요 :)👇🏻</h2>
+                </div>
+                <div class="upload_text">
+                    <p class="basic_text">기본 이미지 업로드</p>
+                    <p class="style_text">스타일 이미지 업로드</p>
+                </div>
+                <div class="upload_image">
+                    <div>
+                        <div class="section_upload_box">
+                            <img class="section_default_image" id="default_image" src="/static/images/logo.png" onerror="this.src='/static/images/logo.png'">
+                        </div> 
+                        <div style="margin-top: 15px; margin-bottom: 50px;">
+                            <input id="basic_image" type="file" style="margin-left:50px">      
+                        </div>
+                    </div>
+                    <div>
+                        <div class="section_upload_box">
+                            <img class="section_default_image" id="default_style_image" src="/static/images/logo.png" onerror="this.src='/static/images/logo.png'">
+                        </div> 
+                        <div style="margin-top: 15px; margin-bottom: 50px;">
+                            <input id="style_image" type="file" style="margin-left:50px">      
+                        </div>
+                    </div>
+                </div>
+                <div class="image_content">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">제목(최소 4자/최대 50자)</label>
+                        <input id="title" type="text" class="form-control" placeholder="U-NFT의 제목을 입력해주세요!">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">U-NFT  소개</label>
+                        <textarea id="desc" class="form-control" placeholder="U-NFT를 소개해주세요." rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">크리에이터</label>
+                        <input id="creator" class="form-control" type="text" placeholder="username" aria-label="Disabled input example" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">판매여부</label>
+                        <select id="status" class="form-control" aria-label="Default select example">
+                            <option selected>판매여부를 선택해주세요.</option>
+                            <option value="1">판매중</option>
+                            <option value="2">판매완료</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">판매가격(USD)</label>
+                        <input id="price" type="text" class="form-control" placeholder="가격을 입력해주세요!">
+                    </div>
+                    <div class="floating_form mb-3">
+                        <button type="button" class="btn btn-primary"  id="create_button" onclick="handleCreateUnft()"> 생성하기</button>
+                        <button type="button" class="btn btn-primary"  id="cancel_button" onclick="location.href='index.html';"> 취소하기</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        
+    </div>
+    <footer>
+
+    </footer>
+    <!-- JS 파일 -->
+    <script src="static/js/create_unft.js"></script>
+    <script src="static/js/logout.js"></script>
+</body>
