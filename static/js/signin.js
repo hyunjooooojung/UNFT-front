@@ -41,12 +41,12 @@ async function handleSignin() {
             alert("로그인 되었습니다.")
             location.href = "http://127.0.0.1:5500/index.html";
         } 
-        // 회원가입 할 때 입력한 이메일,비밀번호와 일치 하지 않을 경우
+        // 회원가입 할 때 입력한 아이디,비밀번호와 일치 하지 않을 경우
         else if (response.status == 401) {
-            alert("이메일과 비밀번호가 일치하지 않습니다! 다시 입력해주세요.");
+            alert("아이디와 비밀번호가 일치하지 않습니다! 다시 입력해주세요.");
         }
         else {
-            alert("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요!");
+            alert("로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요!");
             console.warn(`${response.status} 에러가 발생했습니다.`);
         }
     }
