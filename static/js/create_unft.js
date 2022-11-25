@@ -12,8 +12,8 @@ async function handleCreateUnft() {
   const desc = document.getElementById("desc").value;
   const status = document.getElementById("status").value;
   const price = document.getElementById("price").value;
-  const basefileField = document.getElementById("base_image").files[0]
-  const stylefileField = document.getElementById("style_image").files[0]
+  const basefileField = document.getElementById("base_image").files[0];
+  const stylefileField = document.getElementById("style_image").files[0];
 
 
 
@@ -48,6 +48,19 @@ async function handleCreateUnft() {
   });
 }
 
+document.getElementById("status").addEventListener("change",function(){
+  const status = document.getElementById("status").value;
+  toggleStatusUI(status=="true"? true : false);
+});
+function toggleStatusUI(status){
+  if(status == true){
+      document.getElementById("price").removeAttribute("Disabled")
+      document.getElementById("price").parentElement.style.display = "block";
+  }else{
+      document.getElementById("price").setAttribute("Disabled","Disabled")
+      document.getElementById("price").parentElement.style.display = "none";
+  }
+}
 
 // base image 화면에 보여주기
 function readImage(input) {
@@ -115,3 +128,7 @@ style_image.addEventListener('drop', function (e) {
     e.preventDefault();
     this.style.backgroundColor = 'white';
 });
+
+
+
+
