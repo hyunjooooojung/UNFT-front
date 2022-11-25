@@ -91,8 +91,7 @@ async function handleUpdateUnft() {
     
     const response = await fetch('http://127.0.0.1:8000/unft/'+url_param+'/',{
         headers: {
-            // "Authorization":"Bearer " + localStorage.getItem("access"),
-            "Authorization":"Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY5NDEyMDk0LCJpYXQiOjE2NjkzNjg4OTQsImp0aSI6ImY1MjJhZDRmMzhlNzRiOWJhMjAxYjhjY2VjYjY4NDVjIiwidXNlcl9pZCI6MiwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0.MnZoI1xvZhnE2lVVLPlC_P8f-KUta87ubr4B97k05rA",
+            "Authorization":"Bearer " + localStorage.getItem("access"),
         },
         method:'PUT',
         body: unft_formData,
