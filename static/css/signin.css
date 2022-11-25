@@ -76,6 +76,15 @@
     text-decoration: bold;
 }
 
+.btn{
+    background-color: #7E50FF;
+    color: #fff;
+}
+
+.btn:hover{
+    background-color: #682EEF;
+    color: #fff;
+}
 
 
 

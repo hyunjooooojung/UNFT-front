@@ -7,7 +7,7 @@ function email_check(email) {
 
 // 패스워드 형식 확인을 위한 정규식 체크
 function password_check(password) {
-    var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return reg.test(password);
 }
 
@@ -17,10 +17,9 @@ async function handleSignup() {
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
-    const usd = document.getElementById("usd").value
 
     
-    if (email === "" || username === "" || password === "" || password2 === "" || usd === "") {
+    if (email === "" || username === "" || password === "" || password2 === "" ) {
         alert("빈칸을 채워주세요!")
     }
     else if (username.length > 8) {
@@ -38,6 +37,11 @@ async function handleSignup() {
     else if (!password_check(password)){
 		alert("비밀번호는 8-20자이며 최소 하나 이상의 영문자, 숫자, 특수문자가 필요합니다!");
 	}
+    else if (!agree.checked) {
+        alert("약관 동의 체크는 필수입니다!");
+        agree.focus();
+        return false;
+    }
     else {
         const response = await fetch("http://127.0.0.1:8000/users/signup/", {
             headers: {
@@ -49,7 +53,6 @@ async function handleSignup() {
                 "username": username,
                 "password": password,
                 "password2": password2,
-                "usd" : usd
             })
         })
         if(response.ok){

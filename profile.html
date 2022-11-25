@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-NFT</title>
+    <!-- 페이지 meta태그 -->
+    <meta name=”description” content=”페이지 설명”>
+    <meta name=”keywords” content=”페이지에,들어간,키워드,단어로,입력,구분은,쉼표로”>
+    <meta property="og:site_name" content="The Rock" />
+    <meta property="og:title" content="The Rock Content" />
+    <meta property="og:description"
+        content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 페이지별 css 추가 -->
+    <link rel="stylesheet" href="/static/css/profile.css">
+
+</head>
+
+<body>
+    <header class="header_sticky">
+        <div class="container">
+            <nav>
+                <div class="flex">
+                    <div class="navbar_logo">
+                        <a href="/">
+                            <img src="/static/images/logo.png" alt="unftlogo" />
+                        </a>
+                    </div>
+                    <div class="navbar_nav flex w-100">
+                        <ul class="navbar_menu nav-left">
+                            <li class="navbar_item">
+                                <a href="create_unft.html">
+                                    U-NFT 생성
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar_menu nav-right">
+                            <li class="navbar_item">
+                                <a href="/signin.html">
+                                    SIGN IN
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="wrap">
+        <div class="container">
+            <section class="sec sec_unft_detail mt-5">
+                <div class='unft_card item_card item_detail_card'>
+                    <div class="card_header list_profile">
+                        <div class="unft_images item_image">
+                            <img aria-hidden="false" draggable="false" loading="lazy"
+                                src="/static/images/default_profile.png">
+                        </div>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_content">
+                            <div class="unft_card_title item_card_title">
+                                <span class="title">user name</span>
+                            </div>
+                            <div class="item_card_editors flex">
+                                <p class="unft_card_owner item_card_editor"><span class="owner_field">email?</span>
+                                    <span class="owner">unft.unft.com</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="sec sec_unft_detail_tab">
+                <div class="tab_menu">
+                    <ul class="tab_list">
+                        <li class="tab_item active"><a href="#tab_01">내 새끼</a></li>
+                        <li class="tab_item"><a href="#tab_02">내가 만든 작품</a></li>
+                        <li class="tab_item"><a href="#tab_03">거래내역</a></li>
+                        <li class="tab_item"><a href="#tab_04">제안내역</a></li>
+                    </ul>
+                </div>
+                <div class="tab_body">
+                    <div class="tab_content unft_card_list active" id="tab_01">
+                        <div class='unft_card_list item_card_list' id="unft_card_list">
+                            <div class="row">
+                                <!-- card start -->
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's Top Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's Top Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's Top Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's Top Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's Top Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_content unft_card_list" id="tab_02">
+                        <div class='unft_card_list item_card_list' id="unft_card_list">
+                            <div class="row">
+                                <!-- card start -->
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's
+                                                            Top
+                                                            Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                        <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's
+                                                            Top
+                                                            Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                        <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's
+                                                            Top
+                                                            Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                        <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's
+                                                            Top
+                                                            Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                        <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <a href="#">
+                                        <div class='unft_card item_card'>
+                                            <div class="card_header list_profile">
+                                                <div class="unft_images item_image scale_up">
+                                                    <img aria-hidden="false" draggable="false" loading="lazy"
+                                                        src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                                                </div>
+                                                <span class="unft_card_status">판매중</span>
+                                            </div>
+                                            <div class="card_body">
+                                                <div class="card_content">
+                                                    <p class="unft_card_title item_card_title"><span
+                                                            class="title">Today's
+                                                            Top
+                                                            Hits</span></p>
+                                                    <p class="unft_card_creator item_card_editor"><span
+                                                            class="creator">Rihanna</span></p>
+                                                    <div class="card_button">
+                                                        <button type="button" class="unft_card_edit">수정</button>
+                                                        <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <p>마지막 거래가</p>
+                                                <p class="unft_card_price"><span class="price">1,000</span> USD</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_content unft_card_dealSuccess" id="tab_03">
+                        <div class="table table_dealSuccess">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="th">
+                                        <span>제안일자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>from</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>to</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>거래금액</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tbody">
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>가나다라마</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_content unft_card_dealAll" id="tab_04">
+                        <div class="tab_title">
+                            <h3>내가 제안한 것</h3>
+                        </div>
+                        <div class="table table_dealAll">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="th">
+                                        <span>제안일자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>상태</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안금액</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tbody">
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab_title2">
+                            <h3>내가 제안받은 것</h3>
+                        </div>
+                        <div class="table table_dealAll">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="th">
+                                        <span>제안일자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안자</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>상태</span>
+                                    </div>
+                                    <div class="th">
+                                        <span>제안금액</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tbody">
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="td">
+                                        <span>2022.11.21 01:16</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>ABCDEFG</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>승인</span>
+                                    </div>
+                                    <div class="td">
+                                        <span>123,456 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Delete Modal -->
+    <div class="modal fade moreModel" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body flex flex_column">
+                    <h5 class="modal_title">정말 삭제하시겠습니까?</h5>
+                </div>
+                <div class="modal-footer flex flex_column p-0">
+                    <button type="button" class="btn btn_modal_feedmore btn_delete red" data-bs-dismiss="modal" aria-label="Delete">Delete</button>
+                    <button type="button" class="btn btn_modal_feedmore btn_close" data-bs-dismiss="modal" aria-label="Cancle">Cancle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+
+    </footer>
+    <script src="static/js/logout.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/profile.js"></script>
+</body>

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <!-- 페이지별 css 추가 -->
-    <link rel="stylesheet" href="/static/css/signup.css">
+    <link rel="stylesheet" href="/static/css/create_unft.css">
 </head>
 <body>
     <header class="header_sticky">
@@ -60,58 +60,61 @@
         </div>
     </header>
     <div class="wrap">
-        <section class="sec_signup">
-            <div class="container_main">
-                <div class="signup_content">
-                    <h2 class="signup_title">회원가입</h2>
-                </div>
-                <div class="input_box">
-                    <h3 class="input_title">이메일 주소*</h3>
-                    <div class="input_email_item">
-                        <input id="email" type="email" name="email" placeholder="예) unft@unft.co.kr" class="input_txt">
+        <div class="container">
+            <section class="sec sec_unft_form create_unft">
+                <div class= "container_create_main">
+                    <div class="create_content">
+                        <h1 class="create_title">U-NFT 수정하기</h1>
                     </div>
-                </div>
-                <div class="input_box">
-                    <h3 class="input_title">아이디*</h3>
-                    <div class="input_username_item">
-                        <input id="username" type="username" name="username" placeholder="8자리 이하로 입력해주세요" class="input_txt">
-                    </div>
-                </div>
-                <div class="input_box">
-                    <h3 class="input_title">비밀번호*</h3>
-                    <div class="input_password_item">
-                        <input id="password" type="password" name="password" placeholder="영문 대소문자, 숫자, 특수문자 조합 8-20자" class="input_txt">
-                    </div>
-                </div>
-                <div class="input_box">
-                    <h3 class="input_title">비밀번호 확인*</h3>
-                    <div class="input_password2_item">
-                        <input id="password2" type="password" name="password2" placeholder="비밀번호를 한번더 입력해주세요" class="input_txt">
-                    </div>
-                </div>
-                <div class="input_box">
-                    <h3 class="input_title">USD(기본값)</h3>
-                    <div class="input_usd_item">
-                        <input id="usd" type="usd" name="usd" placeholder="기본금 100,000 USD" aria-label="Disabled input example" disabled class="input_txt">
-                    </div>
-                </div>
-                <div class="input_box">
-                    <input type="checkbox" value="Y" name="agree" id="agree">
-                    &nbsp;[필수]&nbsp;&nbsp;만 14세 이상이며 개인정보 수집 및 이용에 동의합니다. 
-                </div>
 
-                <div class="floating_form mb-3">
-                    <button type="button" class="btn btn-primary" style="margin-top:30px; width: 100%" onclick="handleSignup()"> 가입하기
-                    <button type="button" class="btn btn-primary" style="margin-top:30px; width: 100%" onclick="location.href='signin.html'"> 로그인하기</button>
+                    <div class="upload_text">
+                        <p class="result_text">결과 이미지</p>
+                    </div>
+                    <div class="upload_image">
+                        <div>
+                            <div class="unft_images item_image">
+                                <img aria-hidden="false" draggable="false" loading="lazy" src="https://files.metapie.io/images/banners/pc/2022-11-11 10:17:10.583519/11-2-02_pc_v2.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image_content">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">제목(최소 4자/최대 50자)</label>
+                            <input id="title" type="text" class="form-control" Disabled placeholder="U-NFT의 제목을 입력해주세요!">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">U-NFT  소개</label>
+                            <textarea id="desc" class="form-control" Disabled placeholder="U-NFT를 소개해주세요." rows="15"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">크리에이터</label>
+                            <input id="creator" class="form-control" type="text" placeholder="username" aria-label="Disabled input example" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">판매여부</label>
+                            <select id="status" class="form-select" aria-label="Default select example">
+                                <option value="" disabled selected>판매여부를 선택해주세요.</option>
+                                <option value="false">미판매</option>
+                                <option value="true">판매중</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">판매가격(USD)</label>
+                            <input id="price" type="text" class="form-control" placeholder="가격을 입력해주세요!">
+                        </div>
+                        <div class="floating_form mb-3">
+                            <button type="button" class="btn btn-primary"  id="btn_update_unft">수정하기</button>
+                            <button type="button" class="btn btn-primary"  id="cancel_button" onclick="location.href='index.html';"> 취소하기</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
     <footer>
 
     </footer>
-
     <!-- JS 파일 -->
-    <script src="static/js/signup.js"></script>
+    <script src="static/js/edit_unft_api.js"></script>
     <script src="static/js/logout.js"></script>
 </body>

@@ -79,10 +79,23 @@
 .btn_signup{
     width: 100%;
     background-color: blueviolet;
-
-    
 }
 
+.btn{
+    background-color: #7E50FF;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.btn:hover{
+    background-color: #682EEF;
+    color: #fff;
+}
+
+.floating_form {
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 
