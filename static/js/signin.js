@@ -22,7 +22,6 @@ async function handleSignin() {
                 "password": password
             })
         })
-        console.log(response);
         const response_json = await response.json();
 
         if (response.ok) {
@@ -40,7 +39,7 @@ async function handleSignin() {
             const payload_parse = JSON.parse(payload)
             
             alert("로그인 되었습니다.")
-            // location.href = "http://127.0.0.1:5500/index.html";
+            location.href = "http://127.0.0.1:5500/index.html";
         } 
         // 회원가입 할 때 입력한 이메일,비밀번호와 일치 하지 않을 경우
         else if (response.status == 401) {
