@@ -17,7 +17,6 @@ async function handleUnftDetail(){
     const response = await fetch('http://127.0.0.1:8000/unft/'+url_param+'/',{
         headers: {
             "content-type": "application/json",
-            // "Authorization":"Bearer " + localStorage.getItem("access")
         },
         credentials: "include",
         method:'GET',
@@ -29,15 +28,12 @@ async function handleUnftDetail(){
     }).then(result => {
         const response_json = result;
         append_unft_card_detail(response_json)
-        // let unft_card_list = document.getElementById("unft_card_list").querySelector(".row")
-        // append_unft_card_list(response_json,unft_card_list)
         
     }).catch(error => {
         console.warn(error.message)
     });
 }
 function append_unft_card_detail(data){
-    console.log(data)
     const element = document.querySelector(".item_detail_card");
     element.querySelector(".title").innerText = data['title']
     element.querySelector(".id").innerText = "#"+data['id']
