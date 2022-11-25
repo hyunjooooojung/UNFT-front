@@ -110,43 +110,15 @@
                         <input id="usd" type="usd" name="usd" placeholder="기본금 : 100,000 USD" class="input_txt">
                     </div>
                 </div>
-
-                <div class="signup_terms">
-                    <div class="terms_box_open">    
-                        <div class="check_main">
-                            <div class="checkbox_item">
-                                <input id="group_check_1" type="checkbox" class="blind">
-                                <label for="group_check" class="check_label">
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons ico-check-inactive"></svg> -->
-                                    <span class="label_txt">[필수] 만 14세 이상이며 모두 동의합니다.</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="checkbox_sub">
-                                <div class="checkbox_item">
-                                    <input id="agreement" type="checkbox" name class="blind">
-                                    <label for="agreement" class="check_label">
-                                        <span class="label_txt">이용 약관 동의</span>
-                                    </label>
-                                    <a href="#" class="btn_view"> 내용 보기 </a>
-                                </div>
-                                <div class="checkbox_item">
-                                    <input id="privacy" type="checkbox" name class="blind">
-                                    <label for="privacy" class="check_label">
-                                        <span class="label_txt">개인정보 수집 및 이용 동의 </span>
-                                    </label>
-                                    <a href="#" class="btn_view"> 내용 보기 </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="input_box">
+                    <input type="checkbox" value="Y" name="agree" id="agree">
+                    &nbsp;[필수]&nbsp;&nbsp;만 14세 이상이며 개인정보 수집 및 이용에 동의합니다. 
                 </div>
+
                 <div class="floating_form mb-3">
                     <button type="button" class="btn btn-primary" style="margin-top:30px; width: 100%" onclick="handleSignup()"> 가입하기
                     </button>
                 </div>
-                <!-- <a disabled="disabled" href="#" class="btn btn_signup text-black full solid disabled"> 가입하기 </a> -->
             </div>
         </section>
     </div>

@@ -79,7 +79,7 @@
             <div class="container_create_main">
                 <div class="create_content">
                     <h1 class="create_title">U-NFT 생성하기</h1>
-                    <h2>👇🏻 아래 빈 칸에 두 가지의 이미지를 드래그해서 업로드해주세요 :)👇🏻</h2>
+                    <h2>👇🏻 아래 빈 칸에 두 가지의 이미지를 업로드해주세요 :)👇🏻</h2>
                 </div>
                 <div class="upload_text">
                     <p class="basic_text">기본 이미지 업로드</p>
@@ -87,16 +87,16 @@
                 </div>
                 <div class="upload_image">
                     <div>
-                        <div class="section_upload_box">
-                            <img class="section_default_image" id="default_image" src="/static/images/logo.png" onerror="this.src='/static/images/logo.png'">
+                        <div class="section_base_box">
+                            <img class="section_default_image" id="default_image">
                         </div> 
                         <div style="margin-top: 15px; margin-bottom: 50px;">
-                            <input id="basic_image" type="file" style="margin-left:50px">      
+                            <input id="base_image" type="file" style="margin-left:50px">      
                         </div>
                     </div>
                     <div>
-                        <div class="section_upload_box">
-                            <img class="section_default_image" id="default_style_image" src="/static/images/logo.png" onerror="this.src='/static/images/logo.png'">
+                        <div class="section_style_box">
+                            <img class="section_default_image" id="default_style_image">
                         </div> 
                         <div style="margin-top: 15px; margin-bottom: 50px;">
                             <input id="style_image" type="file" style="margin-left:50px">      
@@ -120,8 +120,8 @@
                         <label for="exampleFormControlInput1" class="form-label">판매여부</label>
                         <select id="status" class="form-control" aria-label="Default select example">
                             <option selected>판매여부를 선택해주세요.</option>
-                            <option value="1">판매중</option>
-                            <option value="2">판매완료</option>
+                            <option value="True">판매중</option>
+                            <option value="False">미판매</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -129,15 +129,12 @@
                         <input id="price" type="text" class="form-control" placeholder="가격을 입력해주세요!">
                     </div>
                     <div class="floating_form mb-3">
-                        <button type="button" class="btn btn-primary"  id="create_button" onclick="handleCreateUnft()"> 생성하기</button>
+                        <button type="button" class="btn btn-primary"  id="create_button"> 생성하기</button>
                         <button type="button" class="btn btn-primary"  id="cancel_button" onclick="location.href='index.html';"> 취소하기</button>
                     </div>
                 </div>
-                
-                
             </div>
         </section>
-        
     </div>
     <footer>
 
