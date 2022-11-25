@@ -12,20 +12,21 @@ async function handleCreateUnft() {
   const desc = document.getElementById("desc").value;
   const status = document.getElementById("status").value;
   const price = document.getElementById("price").value;
-  const fileField = document.querySelector('input[type="file"]').files[0];
+  const basefileField = document.getElementById("base_image").files[0]
+  const stylefileField = document.getElementById("style_image").files[0]
+
 
   unft_formData.append("title",title);
   unft_formData.append("desc",desc);
   unft_formData.append("status",status);
   unft_formData.append("price",price);
-  unft_formData.append("base_image", fileField);
-  unft_formData.append("style_image", fileField);
-  unft_formData.append("result_image", fileField);
-  
+  unft_formData.append("base_image", basefileField);
+  unft_formData.append("style_image", stylefileField);
+
   const response = await fetch('http://127.0.0.1:8000/unft/',{
       method:'POST',
       headers: {
-          "Authorization":"Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY5NDAxMTQxLCJpYXQiOjE2NjkzNTc5NDEsImp0aSI6ImIzYjZjOTM0Njc3ODQ1YTViMDJiYTM0ZWE4ZGEwNThjIiwidXNlcl9pZCI6MSwiZW1haWwiOiJra2tra0BuYXZlci5jb20iLCJpc19hZG1pbiI6ZmFsc2V9.tbhbBj3DSDZp-vLBcHFOs38OWY8VfFmnYbeo6uS1T4o"
+          "Authorization":"Bearer " + localStorage.getItem("access"),
       },
       body: unft_formData,
   })
@@ -38,6 +39,7 @@ async function handleCreateUnft() {
   })
   .then(result => {
       alert("U-NFT 생성에 성공했습니다!")
+      location.href="/unft.html?unft=" + result["id"];
   })
   .catch(error => {
       alert("U-NFT 생성에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
