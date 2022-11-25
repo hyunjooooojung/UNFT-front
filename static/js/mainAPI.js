@@ -33,7 +33,7 @@ function append_unft_card_list(dataset,element){
                 <div class='unft_card item_card' id='unft_${data['id']}'>
                     <div class="card_header list_profile">
                         <div class="unft_images item_image scale_up">
-                            <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000/${data['result_image']}">
+                            <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
                         </div>
                        ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
                     </div>
