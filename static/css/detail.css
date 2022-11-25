@@ -3,6 +3,7 @@
     border: 0;
     border-radius: 0;
     box-shadow: unset;
+    cursor:default;
 }
 
 .item_detail_card .card_header{
@@ -34,6 +35,10 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
+}
+.item_detail_card .card_body .item_card_editor >a{
+    display: flex;
+    align-items: center;
 }
 .item_detail_card .card_body .item_card_editor .editor_profile{
     border-radius: 50%;
