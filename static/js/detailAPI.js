@@ -196,23 +196,38 @@ async function handleDealDetail(){
 async function handleDeal(){
     const price = document.getElementById("price_input").value
     const unft_id = getParams("unft")
-    const response = await fetch(`http://127.0.0.1:8000/deal/`, {
-        headers: {
-            "content-type": "application/json",
-            "Authorization":"Bearer " + localStorage.getItem("access"),
-        },
-        method: "POST",
-        body: JSON.stringify({
-            "unft":unft_id,
-            "price":price,
-            "from_user":owner_id,
+    let access_token = localStorage.getItem("access")
+    let response;
+    if (access_token){
+        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization":"Bearer " + access_token,
+            },
+            method: "POST",
+            body: JSON.stringify({
+                "unft":unft_id,
+                "price":price,
+                "from_user":owner_id,
+            })
         })
-    }).catch(error => {
-        console.error(error.message)
-    });
+    }else{
+        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+            headers: {
+                "content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+                "unft":unft_id,
+                "price":price,
+                "from_user":owner_id,
+            })
+        })
+    }
     const response_json = await response.json()
     if("message" in response_json){
         alert(response_json.message)
+        console.error(`${response.message} 에러 발생`)
     }else{
         alert("제안되었습니다!")
     };
