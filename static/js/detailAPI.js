@@ -66,6 +66,8 @@ function append_unft_card_detail(data){
         element.querySelector(".unft_card_price_field").innerText = "판매가"
         element.querySelector(".unft_card_price .price").innerText = insertCommas(data['price'])
     }else{
+        element.querySelector(".unft_card_price_field").innerText = "마지막 거래가"
+        element.querySelector(".unft_card_price .price").innerText = insertCommas(data['last_price'])
         element.querySelector('.unft_card_status').remove();
     }
     document.querySelector(".unft_card_desc").innerHTML = `<p>${data['desc']}</p>`
@@ -133,7 +135,7 @@ async function handleOfferDetail(){
                                             <span>${dealStatus}</span>
                                         </div>
                                         <div class="td">
-                                            <span>${deal["price"]}</span>
+                                            <span>${insertCommas(deal["price"])}</span>
                                         </div>
                                         `
                     offer_body.append(new_item);
@@ -187,13 +189,10 @@ async function handleDealDetail(){
                                             <span>${element["to_user_username"]}</span>
                                         </div>
                                         <div class="td">
-                                            <span>${element["price"]}</span>
+                                            <span>${insertCommas(element["price"])}</span>
                                         </div>
                                         `
                         deal_body.append(new_item);
-                        // UNFT 마지막 거래가 삽입
-                        let last_price_div = document.querySelector(".unft_card_price")
-                        last_price_div.querySelector(".price").innerText = `${result[0]["price"]}`
                         deal_count += 1
                 }
             });

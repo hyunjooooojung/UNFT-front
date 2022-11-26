@@ -70,7 +70,7 @@ function append_unft_card_list(dataset, element) {
                     </div>
                     <div class="card_footer">
                         ${data['status'] ? `<p>판매가</p>` : `<p>마지막 거래가</p>`}
-                        <p class="unft_card_price"><span class="price">${insertCommas(data['status'] ? data['price'] : 0)}</span> USD ~ </p>
+                        <p class="unft_card_price"><span class="price">${insertCommas(data['status'] ? data['price'] : data['last_price'])}</span> USD ~ </p>
                     </div>
                 </div>
             </a>
@@ -109,7 +109,7 @@ function append_unft_card_list1(dataset,element){
                     </div>
                     <div class="card_footer">
                         ${data['status'] ? `<p>판매가</p>` : `<p>마지막 거래가</p>`}
-                        <p class="unft_card_price"><span class="price">${insertCommas(data['status'] ? data['price'] : 0)}</span> USD ~ </p>
+                        <p class="unft_card_price"><span class="price">${insertCommas(data['status'] ? data['price'] : data['last_price'])}</span> USD ~ </p>
                     </div>
                 </div>
             </a>
