@@ -54,6 +54,7 @@ async function handleCreateUnft() {
       location.href="/unft.html?unft=" + result["id"];
   })
   .catch(error => {
+      alert("U-NFT 생성에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
       console.warn(error.message);
       loader.classList.remove('show');
   });
