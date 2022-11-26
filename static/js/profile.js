@@ -34,6 +34,7 @@ async function handleProfile(){
         // 내새끼 리스트
         let owner_unft_card_list = document.getElementById("owner_unft_card_list").querySelector(".row")
         append_unft_card_list(response_json['own_unft'],owner_unft_card_list)
+        
         // 내가만든 작품 리스트
         let creator_unft_card_list = document.getElementById("creator_unft_card_list").querySelector(".row")
         append_unft_card_list1(response_json['create_unft'],creator_unft_card_list)
@@ -76,6 +77,8 @@ function append_unft_card_list(dataset, element) {
     });
 }
 
+ // 내가만든 작품 리스트
+ // -  owner가 username(creator)이랑 같은 경우 [수정],[삭제] 버튼 있음.
 function append_unft_card_list1(dataset,element){
     element.innerHTML='';
     dataset.forEach(data => {
@@ -94,10 +97,10 @@ function append_unft_card_list1(dataset,element){
                         <div class="card_content">
                             <p class="unft_card_title item_card_title"><span class="title">${data['title']}</span></p>
                             <p class="unft_card_creator item_card_editor"><span class="creator">${data['creator']}</span></p>
-                            <div class="card_button">
+                            ${data['creator']==data['owner'] ?`<div class="card_button">
                                 <button type="button" class="unft_card_edit"><a href="/edit_unft.html?unft=${data['id']}">수정</a></button>
                                 <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
-                            </div>
+                            </div>`: ``}
                         </div>
                     </div>
                     <div class="card_footer">
@@ -120,6 +123,7 @@ function append_unft_card_list1(dataset,element){
                 </div>
             </div>
         `;
+
         element.append(new_item);
     });
 }
