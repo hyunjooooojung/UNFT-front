@@ -158,6 +158,7 @@ async function handleDealDetail(){
     }).then(result => {
         let deal_body = document.getElementById("deal_body")
         deal_body.innerHTML="";
+        let deal_count = 0;
         if ("message" in result){
             null_item = document.createElement("div");
             null_item.className = "tr"
@@ -190,21 +191,22 @@ async function handleDealDetail(){
                         // UNFT 마지막 거래가 삽입
                         let last_price_div = document.querySelector(".unft_card_price")
                         last_price_div.querySelector(".price").innerText = `${result[0]["price"]}`
-
-                }else{
-                    null_item = document.createElement("div");
-                    null_item.className = "tr"
-                    null_item.innerHTML = `
-                                        <div class="td">
-                                            <span>거래 내역이 없습니다.</span>
-                                        </div>
-                                        `
-                    deal_body.append(null_item)
+                        deal_count += 1
                 }
             });
+            if (deal_count === 0){
+            null_item = document.createElement("div");
+            null_item.className = "tr";
+            null_item.innerHTML = `
+                                <div class="td">
+                                    <span>거래 내역이 없습니다.</span>
+                                </div>
+                                `;
+            deal_body.append(null_item);
+            };
         };
     }).catch(error => {
-        console.error(error.message)
+        console.error(error.message);
     });
 };
 
@@ -227,23 +229,39 @@ async function handleDeal(){
         return
     }
 
-    const response = await fetch(`http://127.0.0.1:8000/deal/`, {
-        headers: {
-            "content-type": "application/json",
-            "Authorization":"Bearer " + localStorage.getItem("access"),
-        },
-        method: "POST",
-        body: JSON.stringify({
-            "unft":unft_id,
-            "price":price,
-            "from_user":owner_id,
+    let access_token = localStorage.getItem("access")
+    let response;
+    if (access_token){
+        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization":"Bearer " + access_token,
+            },
+            method: "POST",
+            body: JSON.stringify({
+                "unft":unft_id,
+                "price":price,
+                "from_user":owner_id,
+            })
+
         })
-    }).catch(error => {
-        console.error(error.message)
-    });
+    }else{
+        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+            headers: {
+                "content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+                "unft":unft_id,
+                "price":price,
+                "from_user":owner_id,
+            })
+        })
+    }
     const response_json = await response.json()
     if("message" in response_json){
         alert(response_json.message)
+        console.error(`${response.message} 에러 발생`)
     }else{
         alert("제안되었습니다!")
     };
