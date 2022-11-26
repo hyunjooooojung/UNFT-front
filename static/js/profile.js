@@ -49,20 +49,22 @@ function append_unft_card_list(dataset, element) {
         let new_item = document.createElement('div');
         new_item.className = 'col-lg-3 col-md-4 col-6';
         new_item.innerHTML = `
-            <a href="/unft.html?unft=${data['id']}">
-                <div class='unft_card item_card' id='unft_${data['id']}'>
+            
+                <div class='unft_card item_card' id='owner_unft_${data['id']}'>
                     <div class="card_header list_profile">
-                        <div class="unft_images item_image scale_up">
-                            <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
-                        </div>
-                       ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
+                        <a href="/unft.html?unft=${data['id']}">
+                            <div class="unft_images item_image scale_up">
+                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
+                            </div>
+                            ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
+                        </a>
                     </div>
                     <div class="card_body">
                         <div class="card_content">
-                            <p class="unft_card_title item_card_title"><span class="title">${data['title']}</span></p>
-                            <p class="unft_card_creator item_card_editor"><span class="creator">${data['creator']}</span></p>
+                            <p class="unft_card_title item_card_title"><a href="/unft.html?unft=${data['id']}"><span class="title">${data['title']}</span></a></p>
+                            <p class="unft_card_creator item_card_editor"><a href="/unft.html?unft=${data['id']}"><span class="creator">${data['creator']}</span></a></p>
                             <div class="card_button">
-                                <button type="button" class="unft_card_edit"><a href="/edit_unft.html?unft=${data['id']}">수정</a></button>
+                                <button type="button" class="unft_card_edit" onclick="javascript:location.href='/edit_unft.html?unft=${data['id']}'">수정</button>
                             </div>
                         </div>
                     </div>
@@ -85,20 +87,22 @@ function append_unft_card_list1(dataset,element){
         let new_item = document.createElement('div');
         new_item.className = 'col-lg-3 col-md-4 col-6';
         new_item.innerHTML = `
-            <a href="/unft.html?unft=${data['id']}">
-                <div class='unft_card item_card' id='unft_${data['id']}'>
+                <div class='unft_card item_card' id='creator_unft_${data['id']}'>
                     <div class="card_header list_profile">
-                        <div class="unft_images item_image scale_up">
-                            <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
-                        </div>
-                    ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
+                        <a href="/unft.html?unft=${data['id']}">
+                            <div class="unft_images item_image scale_up">
+                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
+                            </div>
+                            ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
+                        <a href="/unft.html?unft=${data['id']}">
                     </div>
                     <div class="card_body">
                         <div class="card_content">
-                            <p class="unft_card_title item_card_title"><span class="title">${data['title']}</span></p>
-                            <p class="unft_card_creator item_card_editor"><span class="creator">${data['creator']}</span></p>
-                            ${data['creator']==data['owner'] ?`<div class="card_button">
-                                <button type="button" class="unft_card_edit"><a href="/edit_unft.html?unft=${data['id']}">수정</a></button>
+                            <p class="unft_card_title item_card_title"><a href="/unft.html?unft=${data['id']}"><span class="title">${data['title']}</span></a></p>
+                            <p class="unft_card_creator item_card_editor"><a href="/unft.html?unft=${data['id']}"><span class="creator">${data['creator']}</span></a></p>
+                            ${data['creator']==data['owner'] ?`
+                            <div class="card_button">
+                                <button type="button" class="unft_card_edit" onclick="javascript:location.href='/edit_unft.html?unft=${data['id']}'">수정</button>
                                 <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
                             </div>`: ``}
                         </div>
@@ -109,46 +113,32 @@ function append_unft_card_list1(dataset,element){
                     </div>
                 </div>
             </a>
-            <div class="modal fade moreModel" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body flex flex_column">
-                            <h5 class="modal_title">정말 삭제하시겠습니까?</h5>
-                        </div>
-                        <div class="modal-footer flex flex_column p-0">
-                            <button type="button" class="btn btn_modal_feedmore btn_delete red" data-bs-dismiss="modal" aria-label="Delete"">Delete</button>
-                            <button type="button" class="btn btn_modal_feedmore btn_close" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         `;
 
         element.append(new_item);
     });
 }
-$('#delete').on('show.bs.modal', function(event) {
-    target_id = $(event.relatedTarget).closest(".modal").attr("data-target")
-    $(this).find(".btn_delete").attr("onclick","location.href='/"+target_id+"'");
-    });
-async function handleDeleteUnft(el) {
+$('#deleteModal').on('show.bs.modal', function(event) {
+    target_id = $(event.relatedTarget).closest(".item_card").attr('id').split("_")[2]
+    $(this).find(".btn_delete").attr("onclick","handleDeleteUnft("+target_id+")");
+});
 
-    const response = await fetch('http://127.0.0.1:8000/unft/'+data['id']+'/',{
+async function handleDeleteUnft(unft_id) {
+    console.log('http://127.0.0.1:8000/unft/'+unft_id+'/');
+    const response = await fetch('http://127.0.0.1:8000/unft/'+unft_id+'/',{
         method:'DELETE',
-        
         headers: {
             "Authorization":"Bearer " + localStorage.getItem("access"),
         },
-        
     }).then(response => {
         if(!response.ok){
             throw new Error(`${response.status} 에러가 발생했습니다.`);    
         }
         return response;
     }).then(async result => {
-        alert("U-NFT 삭제에 성공했습니다!")
-        remove_unft = document.getElementById(data['id']);
-        remove_unft.remove();
+        alert("U-NFT 삭제에 성공했습니다!");
+        document.getElementById("creator_unft_"+unft_id).remove();
+        document.getElementById("owner_unft_"+unft_id).remove();  
     }).catch(async error => {
         alert("U-NFT 삭제에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
         console.warn(error.message);
