@@ -95,7 +95,7 @@
                         <div class="card_footer">
                             <p class="unft_card_price_field">마지막 거래가</p>
                             <p class="unft_card_price"><span class="price">1,000</span> USD ~ </p>
-                            <button type="button" class="btn btn_default btn_deal_modal"> <i class="bi bi-wallet2"></i> 가격 제안하기 </button>
+                            <button type="button" class="btn btn_default btn_deal_modal" data-bs-toggle="modal" data-bs-target="#dealModal"> <i class="bi bi-wallet2"></i> 가격 제안하기 </button>
                         </div>
                     </div>
                 </div>
@@ -378,6 +378,23 @@
             </section>
         </div>
     </div>
+    <!-- 제안 Modal -->
+    <div class="modal fade moreModel" id="dealModal" tabindex="-1" aria-labelledby="dealModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body flex flex-column">
+                    <h5 class="modal_title">제안하기</h5>
+                    <input id="price_input" type="number" name="price" placeholder="제안 금액을 입력해주세요.">
+                    <p>제안하시겠습니까?</p>
+                </div>
+                <div class="modal-footer flex flex_column p-0">
+                    <button type="button" class="btn btn_modal_feedmore btn_deal" data-bs-dismiss="modal" aria-label="Deal" onclick="handleDeal()">Deal</button>
+                    <button type="button" class="btn btn_modal_feedmore btn_close" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
 
     </footer>

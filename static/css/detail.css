@@ -136,3 +136,49 @@
 .table_dealAll.table .tr .th:nth-child(3),.table_dealAll.table .tr .td:nth-child(3){
     flex : 0 0 70px;
 }
+
+
+/* dealModal */
+.moreModel .modal-content{
+    padding: 1em;
+}
+.moreModel .modal-body{
+    text-align: center;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding: 32px 0;
+    display: flex;
+    justify-content: center;
+}
+.moreModel .modal_title{
+    font-size: 1.25em;
+    font-weight: 600;
+    margin: 1em 0;
+}
+.moreModel p{
+    margin: 1em 0;
+}
+#price_input{
+    display: inline-block;
+    margin: 1em auto;
+    width: 50%;
+}
+.moreModel .modal-footer{
+    border:0;
+}
+.moreModel button.btn_modal_feedmore, .moreModel button.btn_modal_feedmore:hover{
+    width: 100%;
+    border-top: 1px solid rgb(219,219,219);
+    line-height: 1.5;
+    min-height: 56px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0;
+    margin:0;
+}
+.moreModel button.btn_modal_feedmore:first-child{
+    border-top:0;
+}
+.moreModel button.btn_modal_feedmore.btn_deal{
+    color: #7E50FF;
+    font-weight: 600;
+}

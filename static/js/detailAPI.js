@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function(){
     handleOfferDetail()
     handleDealDetail()
 });
+// U-NFT의 owner_id값을 전역변수로
+let owner_id;
+
 // url을 불러오는 함수
 function getParams(params){
     const url = window.location.href
@@ -30,7 +33,7 @@ async function handleUnftDetail(){
     }).then(result => {
         const response_json = result;
         append_unft_card_detail(response_json)
-        
+        owner_id = result['owner_id']
     }).catch(error => {
         console.warn(error.message)
     });
@@ -150,7 +153,6 @@ async function handleDealDetail(){
         }else{
             result.forEach(element => {
                 if (element.status === 1){
-                    console.log(element)
                     let new_item = document.createElement("div");
                     new_item.className = "tr"
                     new_item.innerHTML = `
@@ -168,6 +170,10 @@ async function handleDealDetail(){
                                         </div>
                                         `
                         deal_body.append(new_item);
+                        // UNFT 마지막 거래가 삽입
+                        let last_price_div = document.querySelector(".unft_card_price")
+                        last_price_div.querySelector(".price").innerText = `${result[0]["price"]}`
+
                 }else{
                     null_item = document.createElement("div");
                     null_item.className = "tr"
@@ -183,4 +189,29 @@ async function handleDealDetail(){
     }).catch(error => {
         console.error(error.message)
     });
+};
+
+async function handleDeal(){
+    const price = document.getElementById("price_input").value
+    const unft_id = getParams("unft")
+    const response = await fetch(`http://127.0.0.1:8000/deal/`, {
+        headers: {
+            "content-type": "application/json",
+            "Authorization":"Bearer " + localStorage.getItem("access"),
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "unft":unft_id,
+            "price":price,
+            "from_user":owner_id,
+        })
+    }).catch(error => {
+        console.error(error.message)
+    });
+    const response_json = await response.json()
+    if("message" in response_json){
+        alert(response_json.message)
+    }else{
+        alert("제안되었습니다!")
+    };
 };
