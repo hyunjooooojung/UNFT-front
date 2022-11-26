@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
     username = localStorage.getItem("username")
-    console.log("username:",username)
+    usd = localStorage.getItem("usd")
     
+
     if(username){
         document.querySelector("header .navbar_menu.nav-right").innerHTML = `
         <li class="navbar_item">
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 <div class="my_money">
                     <i class="bi bi-wallet2"></i>
                     <p>
-                        <span class="money"> 1,000,000 </span> USD
+                        <span class="money"> ${insertCommas(usd)} </span> USD
                     </p>
                 </div>
             </a>
@@ -25,14 +26,31 @@ document.addEventListener("DOMContentLoaded", function(){
             </a>
         </li>
     `
-    }   
-    
+        const disallow_path = ['/signin.html','/signup.html']
+        const link_pathname =  document.location.pathname;
+        if(disallow_path.includes(link_pathname)){
+            alert("이미 로그인되어 있습니다");
+            location.href = "/";
+        }
+    }else{
+        const disallow_path = ['/create_unft.html','/edit_unft.html']
+        const link_pathname =  document.location.pathname;
+        
+        if(disallow_path.includes(link_pathname)){
+            alert("로그인 후 이용이 가능합니다.");
+            location.href = "/signin.html";
+        }
+    }
 });
 function handleLogout(){
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     localStorage.removeItem("username")
+    localStorage.removeItem("usd")
     alert("로그아웃 되었습니다! ")
     location.href = "http://127.0.0.1:5500/index.html";
+}
+function insertCommas(num){
+    return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
