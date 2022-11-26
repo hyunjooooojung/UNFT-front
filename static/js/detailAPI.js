@@ -34,6 +34,9 @@ async function handleUnftDetail(){
         const response_json = result;
         append_unft_card_detail(response_json)
         owner_id = result['owner_id']
+        if (result["owner"] === localStorage.getItem("username")){
+            document.querySelector(".card_footer .btn_deal_modal").style.display = "none";
+        }
     }).catch(error => {
         console.warn(error.message)
     });
