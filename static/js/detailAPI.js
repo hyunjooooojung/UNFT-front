@@ -31,7 +31,10 @@ async function handleUnftDetail(){
         credentials: "include",
         method:'GET',
     }).then(response => {
-        if(!response.ok){
+        if(response.status == 404){
+            alert("잘못된 경로로 접근하셨습니다.")
+            location.href="/";
+        }else if(!response.ok){
             throw new Error(`${response.status} 에러가 발생했습니다.`);    
         }
         return response.json()
