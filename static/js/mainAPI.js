@@ -5,7 +5,6 @@ async function handleUnftList(){
     const response = await fetch('http://127.0.0.1:8000/unft/',{
         headers: {
             "content-type": "application/json",
-            // "Authorization":"Bearer " + localStorage.getItem("access")
         },
         method:'GET',
     }).then(response => {

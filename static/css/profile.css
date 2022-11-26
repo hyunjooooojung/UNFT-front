@@ -127,9 +127,13 @@
     padding-right: 15px;
 }
 .table .tbody{
-    height: 300px;
+    min-height: 300px;
     overflow-y: scroll;
-
+}
+#tab_04 .table .tbody{
+    min-height: 100px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 .table .tr{
     display: flex;

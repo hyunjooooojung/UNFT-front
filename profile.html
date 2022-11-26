@@ -79,11 +79,12 @@
                     <div class="card_body">
                         <div class="card_content">
                             <div class="unft_card_title item_card_title">
-                                <span class="title">user name</span>
+                                <span class="title" id="profile_username">user name</span>
+                                <input type="hidden" id="profile_user_id">
                             </div>
                             <div class="item_card_editors flex">
-                                <p class="unft_card_owner item_card_editor"><span class="owner_field">email?</span>
-                                    <span class="owner">unft.unft.com</span></p>
+                                <p class="unft_card_owner item_card_editor"><span class="owner_field">email</span>
+                                    <span class="owner" id="profile_email">unft.unft.com</span></p>
                             </div>
                         </div>
                     </div>
@@ -92,15 +93,15 @@
             <section class="sec sec_unft_detail_tab">
                 <div class="tab_menu">
                     <ul class="tab_list">
-                        <li class="tab_item active"><a href="#tab_01">내 새끼</a></li>
-                        <li class="tab_item"><a href="#tab_02">내가 만든 작품</a></li>
-                        <li class="tab_item"><a href="#tab_03">거래내역</a></li>
-                        <li class="tab_item"><a href="#tab_04">제안내역</a></li>
+                        <li class="tab_item active" id="tab_menu_01" ><a href="#tab_01">내 새끼</a></li>
+                        <li class="tab_item" id="tab_menu_02"><a href="#tab_02">내가 만든 작품</a></li>
+                        <li class="tab_item" id="tab_menu_03"><a href="#tab_03">거래내역</a></li>
+                        <li class="tab_item" id="tab_menu_04"><a href="#tab_04">제안내역</a></li>
                     </ul>
                 </div>
                 <div class="tab_body">
                     <div class="tab_content unft_card_list active" id="tab_01">
-                        <div class='unft_card_list item_card_list' id="unft_card_list">
+                        <div class='unft_card_list item_card_list' id="owner_unft_card_list">
                             <div class="row">
                                 <!-- card start -->
                                 <div class="col-lg-3 col-md-4 col-6">
@@ -247,7 +248,7 @@
                         </div>
                     </div>
                     <div class="tab_content unft_card_list" id="tab_02">
-                        <div class='unft_card_list item_card_list' id="unft_card_list">
+                        <div class='unft_card_list item_card_list' id="creator_unft_card_list">
                             <div class="row">
                                 <!-- card start -->
                                 <div class="col-lg-3 col-md-4 col-6">
@@ -426,7 +427,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tbody">
+                            <div class="tbody" id="deal_body">
                                 <div class="tr">
                                     <div class="td">
                                         <span>2022.11.21 01:16</span>
@@ -508,7 +509,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tbody">
+                            <div class="tbody" id="to_offer_body">
                                 <div class="tr">
                                     <div class="td">
                                         <span>2022.11.21 01:16</span>
@@ -685,7 +686,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tbody">
+                            <div class="tbody" id="from_offer_body">
                                 <div class="tr">
                                     <div class="td">
                                         <span>2022.11.21 01:16</span>
