@@ -148,6 +148,11 @@ async function handleDeleteUnft(unft_id) {
 function insertCommas(num){
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
+function changeDateTimeFormat(datetime){ // YYYY-MM-DD HH:MM:SS
+    const TIME_ZONE = 3240 * 10000;
+    const date = new Date(datetime)
+    return new Date(+date + TIME_ZONE).toISOString().replace('T', ' ').replace(/\..*/, '');
+}
 
 
 // tab_menu_03탭 누르면 handleDealDetail() 호출
@@ -186,7 +191,7 @@ async function handleDealDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${element["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(element["updated_at"])}</span>
                                         </div>
                                         <div class="td">
                                             <span>${element["from_user_username"]}</span>
@@ -222,7 +227,8 @@ document.getElementById("tab_menu_04").addEventListener("click",function(){
     handleToOfferDetail();
     handleFromOfferDetail();
 });
-async function handleToOfferDetail(){
+// 내가 제안한 것 섹션
+async function handleToOfferDetail(){ 
     let user_id = document.getElementById("profile_user_id").value;
     let url_param = `to_user=${user_id}`;
     const response = await fetch('http://127.0.0.1:8000/deal/?'+url_param,{
@@ -236,6 +242,7 @@ async function handleToOfferDetail(){
         }
         return response.json()
     }).then(result => {
+        console.log(result);
         let offer_body = document.getElementById("to_offer_body")
         offer_body.innerHTML="";
         if ("message" in result){
@@ -265,7 +272,10 @@ async function handleToOfferDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${deal["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(deal["updated_at"])}</span>
+                                        </div>
+                                        <div class="td">
+                                            <span>${deal["from_user_username"]}</span>
                                         </div>
                                         <div class="td">
                                             <span>${deal["to_user_username"]}</span>
@@ -285,6 +295,7 @@ async function handleToOfferDetail(){
         console.error(error.message)
     })
 };
+// 내가 제안 받은 것 섹션
 async function handleFromOfferDetail(){
     let user_id = document.getElementById("profile_user_id").value;
     let url_param = `from_user=${user_id}`;
@@ -326,9 +337,13 @@ async function handleFromOfferDetail(){
                 
                     let new_item = document.createElement("div");
                     new_item.className = "tr"
+                    new_item.id = "deal_"+deal["price"]
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${deal["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(deal["updated_at"])}</span>
+                                        </div>
+                                        <div class="td">
+                                            <span>${deal["from_user_username"]}</span>
                                         </div>
                                         <div class="td">
                                             <span>${deal["to_user_username"]}</span>
@@ -339,6 +354,10 @@ async function handleFromOfferDetail(){
                                         <div class="td">
                                             <span>${deal["price"]}</span>
                                         </div>
+                                        <div class="td">
+                                            <button type="button" class='btn_deal_approve' onclick='handleDeal(${deal['id']},1)'>승인</button>
+                                            <button type="button" class='btn_deal_reject' onclick='handleDeal(${deal['id']},2)'>거절</button>
+                                        </div>
                                         `
                     offer_body.append(new_item);
                 };
@@ -348,3 +367,8 @@ async function handleFromOfferDetail(){
         console.error(error.message)
     })
 };
+
+function handleDeal(deal_id, status){
+    console.log('승인결과',deal_id,status);
+
+}

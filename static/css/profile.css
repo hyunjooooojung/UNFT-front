@@ -155,7 +155,7 @@
     text-align: right;
 }
 
-.item_card .unft_card_edit{
+.item_card .unft_card_edit,.td .btn_deal_approve{
     background-color: #7077ff;
     border-color: #7077ff;
     color: #fff;
@@ -163,7 +163,7 @@
     padding: 5px 10px;
     font-size: 0.8em;
 }
-.item_card .unft_card_delete{
+.item_card .unft_card_delete,.td .btn_deal_reject{
     background-color: #d46efc;
     border-color: #d46efc;
     color: #fff;
