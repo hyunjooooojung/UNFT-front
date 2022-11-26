@@ -30,7 +30,7 @@ async function handleUnftDetail(){
        const response_json = result;
        if(result['owner'] != localStorage.getItem("username")){
             alert("수정 권한이 없습니다.")
-            location.href='/unft.html?unft='+url_param;
+            location.href=history.back()
         }
        append_unft_card_detail(response_json)
    }).catch(error => {
