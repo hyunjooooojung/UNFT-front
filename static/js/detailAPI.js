@@ -264,5 +264,44 @@ async function handleDeal(){
         console.error(`${response.message} 에러 발생`)
     }else{
         alert("제안되었습니다!")
+        // 제안 내역 추가.
+
+        let offer_body = document.getElementById("offer_body")
+        if(offer_body.querySelector("div:first-child .td span").innerText == '거래/제안 내역이 없습니다.'){
+            offer_body.innerHTML="";
+        }
+        
+        const deal = response_json;
+        if (deal.status !== 0){
+            let dealStatus
+            // 거래승인 상태시
+            if (deal.status === 1){
+                dealStatus = "거래승인"
+            }else if (deal.status === 2){
+                dealStatus = "거래거절"
+            }else{
+                dealStatus = "제안중"
+            }
+        
+            let new_item = document.createElement("div");
+            new_item.className = "tr"
+            new_item.innerHTML = `
+                                <div class="td">
+                                    <span>${changeDateTimeFormat(deal['updated_at'])}</span>
+                                </div>
+                                <div class="td">
+                                    <span>${deal["to_user_username"]}</span>
+                                </div>
+                                <div class="td">
+                                    <span>${dealStatus}</span>
+                                </div>
+                                <div class="td">
+                                    <span>${deal["price"]}</span>
+                                </div>
+                                `
+            offer_body.append(new_item);
+        };
+        
+
     };
 };
