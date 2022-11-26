@@ -1,6 +1,6 @@
 document.getElementById("button_login").addEventListener("click",function(){
     handleSignin();
-  });
+});
 
 async function handleSignin() {
 
@@ -38,8 +38,9 @@ async function handleSignin() {
             const payload = localStorage.getItem("payload")
             const payload_parse = JSON.parse(payload)
             
+            handleProfile(username)
             alert("로그인 되었습니다.")
-            location.href = "http://127.0.0.1:5500/index.html";
+            location.href = "/";
         } 
         // 회원가입 할 때 입력한 아이디,비밀번호와 일치 하지 않을 경우
         else if (response.status == 401) {
@@ -51,4 +52,23 @@ async function handleSignin() {
         }
     }
 
+}
+
+async function handleProfile(url_param){    
+    const response = await fetch('http://127.0.0.1:8000/users/'+url_param+'/',{
+        headers: {
+            "content-type": "application/json",
+        },
+        method:'GET',
+    }).then(response => {
+        if(!response.ok){
+            throw new Error(`${response.status} 에러가 발생했습니다.`);    
+        }
+        return response.json()
+    }).then(result => {
+        const response_json = result;
+        localStorage.setItem("usd", response_json['usd']);
+    }).catch(error => {
+        console.warn(error.message)
+    });
 }

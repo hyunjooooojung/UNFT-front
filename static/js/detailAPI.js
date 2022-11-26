@@ -1,8 +1,12 @@
+const current_username = localStorage.getItem("username")
+const current_username_usd = localStorage.getItem("usd")
 document.addEventListener("DOMContentLoaded", function(){
     handleUnftDetail()
     handleOfferDetail()
     handleDealDetail()
 });
+
+
 // U-NFT의 owner_id값을 전역변수로
 let owner_id;
 
@@ -13,8 +17,9 @@ function getParams(params){
     const get_urlParams = urlParams.get(params);
     return get_urlParams;
 }
+
+// USD 상세 조회 API
 async function handleUnftDetail(){
-     // url이 ?q="unft=1" 형태로 입력되지 않았을 때 에러메세지 출력
     url_param = getParams("unft");
     if (url_param == undefined){
         url_param = localStorage.getItem("unft");
@@ -34,8 +39,10 @@ async function handleUnftDetail(){
         const response_json = result;
         append_unft_card_detail(response_json)
         owner_id = result['owner_id']
-        if (result["owner"] === localStorage.getItem("username")){
-            document.querySelector(".card_footer .btn_deal_modal").style.display = "none";
+
+        // 현재 로그인한 유저가 소유자일 때, 제안하기 버튼 안보이기
+        if(current_username == result['owner']){
+            document.getElementById("btn_deal_modal").remove();
         }
     }).catch(error => {
         console.warn(error.message)
@@ -58,13 +65,20 @@ function append_unft_card_detail(data){
     }else{
         element.querySelector('.unft_card_status').remove();
     }
-    document.querySelector(".unft_card_desc").innerHTML = data['desc']
+    document.querySelector(".unft_card_desc").innerHTML = `<p>${data['desc']}</p>`
+
 }
 
 function insertCommas(num){
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
+function changeDateTimeFormat(datetime){ // YYYY-MM-DD HH:MM:SS
+    const TIME_ZONE = 3240 * 10000;
+    const date = new Date(datetime)
+    return new Date(+date + TIME_ZONE).toISOString().replace('T', ' ').replace(/\..*/, '');
+}
 
+// 최근 제안 내역 조회 API
 async function handleOfferDetail(){
     let url_param = window.location.search;
     const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
@@ -107,7 +121,7 @@ async function handleOfferDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${deal["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(deal['updated_at'])}</span>
                                         </div>
                                         <div class="td">
                                             <span>${deal["to_user_username"]}</span>
@@ -128,7 +142,7 @@ async function handleOfferDetail(){
     })
 };
 
-
+// 최근 거래 내역 조회 API
 async function handleDealDetail(){
     let url_param = window.location.search;
     const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
@@ -161,7 +175,7 @@ async function handleDealDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${element["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(element["updated_at"])}</span>
                                         </div>
                                         <div class="td">
                                             <span>${element["from_user_username"]}</span>
@@ -196,9 +210,25 @@ async function handleDealDetail(){
     });
 };
 
+
+
+// 모달 버튼 클릭시 모달 출력
+document.getElementById("btn_deal_modal").addEventListener("click",function(){
+    if(current_username){
+        $('#dealModal').modal('show');
+    }else{
+        alert("로그인 후 이용이 가능합니다.");
+    }
+});
+// 가격 제안 API
 async function handleDeal(){
     const price = document.getElementById("price_input").value
     const unft_id = getParams("unft")
+    if(current_username_usd < price){
+        alert("보유 금액을 초과해서 제안할 수 없습니다.")
+        return
+    }
+
     let access_token = localStorage.getItem("access")
     let response;
     if (access_token){
@@ -213,6 +243,7 @@ async function handleDeal(){
                 "price":price,
                 "from_user":owner_id,
             })
+
         })
     }else{
         response = await fetch(`http://127.0.0.1:8000/deal/`, {
