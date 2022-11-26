@@ -17,8 +17,9 @@ function getParams(params){
     const get_urlParams = urlParams.get(params);
     return get_urlParams;
 }
+
+// USD 상세 조회 API
 async function handleUnftDetail(){
-     // url이 ?q="unft=1" 형태로 입력되지 않았을 때 에러메세지 출력
     url_param = getParams("unft");
     if (url_param == undefined){
         url_param = localStorage.getItem("unft");
@@ -64,14 +65,20 @@ function append_unft_card_detail(data){
     }else{
         element.querySelector('.unft_card_status').remove();
     }
-    document.querySelector(".unft_card_desc").innerHTML = data['desc']
+    document.querySelector(".unft_card_desc").innerHTML = `<p>${data['desc']}</p>`
 
 }
 
 function insertCommas(num){
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
+function changeDateTimeFormat(datetime){ // YYYY-MM-DD HH:MM:SS
+    const TIME_ZONE = 3240 * 10000;
+    const date = new Date(datetime)
+    return new Date(+date + TIME_ZONE).toISOString().replace('T', ' ').replace(/\..*/, '');
+}
 
+// 최근 제안 내역 조회 API
 async function handleOfferDetail(){
     let url_param = window.location.search;
     const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
@@ -114,7 +121,7 @@ async function handleOfferDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${deal["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(deal['updated_at'])}</span>
                                         </div>
                                         <div class="td">
                                             <span>${deal["to_user_username"]}</span>
@@ -135,7 +142,7 @@ async function handleOfferDetail(){
     })
 };
 
-
+// 최근 거래 내역 조회 API
 async function handleDealDetail(){
     let url_param = window.location.search;
     const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
@@ -167,7 +174,7 @@ async function handleDealDetail(){
                     new_item.className = "tr"
                     new_item.innerHTML = `
                                         <div class="td">
-                                            <span>${element["updated_at"]}</span>
+                                            <span>${changeDateTimeFormat(element["updated_at"])}</span>
                                         </div>
                                         <div class="td">
                                             <span>${element["from_user_username"]}</span>
