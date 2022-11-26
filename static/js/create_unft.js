@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 // unft 생성하기
 async function handleCreateUnft() {
-  const loader = document.getElementById("page-loader")
-  loader.className += 'show';
 
   const unft_formData = new FormData();
 
@@ -36,6 +34,9 @@ async function handleCreateUnft() {
       alert("빈칸을 채워주세요!")
   }
   else {
+
+    const loader = document.getElementById("page-loader")
+    loader.className += 'show';
     const response = await fetch('http://127.0.0.1:8000/unft/',{
       method:'POST',
       headers: {
