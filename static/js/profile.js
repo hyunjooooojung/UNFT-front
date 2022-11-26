@@ -124,7 +124,6 @@ $('#deleteModal').on('show.bs.modal', function(event) {
 });
 
 async function handleDeleteUnft(unft_id) {
-    console.log('http://127.0.0.1:8000/unft/'+unft_id+'/');
     const response = await fetch('http://127.0.0.1:8000/unft/'+unft_id+'/',{
         method:'DELETE',
         headers: {
@@ -403,7 +402,6 @@ async function handleDeal(deal_id, status, unft_id){
             })
         })
         let response_json = await response.json()
-        console.log(response)
         if(response.ok){
             // 거래 성공시 유저 usd 반영 코드
             localStorage.setItem("usd", response_json['from_user_usd']);
