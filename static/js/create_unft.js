@@ -3,6 +3,11 @@ document.getElementById("create_button").addEventListener("click",function(){
   handleCreateUnft();
 });
 
+// 크리에이터 부분에 지금 로그인한 사용자 이름 보여주기
+document.addEventListener("DOMContentLoaded", function(){
+  const username = localStorage.getItem("username")
+  document.getElementById("creator").value = username;
+});
 
 // unft 생성하기
 async function handleCreateUnft() {
@@ -27,8 +32,11 @@ async function handleCreateUnft() {
   unft_formData.append("base_image", basefileField);
   unft_formData.append("style_image", stylefileField);
 
-
-  const response = await fetch('http://127.0.0.1:8000/unft/',{
+  if (basefileField == "" || stylefileField == "" || title == "" || desc == "" || status == "" ){
+      alert("빈칸을 채워주세요!")
+  }
+  else {
+    const response = await fetch('http://127.0.0.1:8000/unft/',{
       method:'POST',
       headers: {
           "Authorization":"Bearer " + localStorage.getItem("access"),
@@ -39,7 +47,6 @@ async function handleCreateUnft() {
       if(!response.ok){
           throw new Error(`${response.status} 에러가 발생했습니다.`);    
       }
-      console.log(response)
       return response.json()
   })
   .then(result => {
@@ -47,11 +54,10 @@ async function handleCreateUnft() {
       location.href="/unft.html?unft=" + result["id"];
   })
   .catch(error => {
-      alert("U-NFT 생성에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
       console.warn(error.message);
       loader.classList.remove('show');
- 
   });
+  }
 }
 
 document.getElementById("status").addEventListener("change",function(){
@@ -99,42 +105,3 @@ const inputImage2 = document.getElementById("style_image")
 inputImage2.addEventListener("change", e => {
   readImage2(e.target)
 })
-
-
-
-// 드래그앤 드롭으로 업로드
-const base_image = document.querySelector('.section_base_box');
-const style_image = document.querySelector('.section_style_box');
-
-// 1. 박스 안에 drag 하고 있을 때
-base_image.addEventListener('dragover', function (e) {
-  e.preventDefault();
-  this.style.backgroundColor = 'rgb(13 110 253 / 25%)';
-});
-style_image.addEventListener('dragover', function (e) {
-    e.preventDefault();
-    this.style.backgroundColor = 'rgb(13 110 253 / 25%)';
-});
-
-// 2. 박스 밖으로 drag가 나갈 때
-base_image.addEventListener('dragleave', function (e) {
-  this.style.backgroundColor = 'white';
-});
-style_image.addEventListener('dragleave', function (e) {
-    this.style.backgroundColor = 'white';
-});
-
-// 3. 박스 안에 drop 했을 때
-base_image.addEventListener('drop', function (e) {
-    e.preventDefault();
-    this.style.backgroundColor = 'white';
-
-});
-style_image.addEventListener('drop', function (e) {
-    e.preventDefault();
-    this.style.backgroundColor = 'white';
-});
-
-
-
-
