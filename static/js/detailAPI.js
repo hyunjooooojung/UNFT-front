@@ -1,4 +1,5 @@
 const current_username = localStorage.getItem("username")
+const current_username_usd = localStorage.getItem("usd")
 document.addEventListener("DOMContentLoaded", function(){
     handleUnftDetail()
     handleOfferDetail()
@@ -214,6 +215,11 @@ document.getElementById("btn_deal_modal").addEventListener("click",function(){
 async function handleDeal(){
     const price = document.getElementById("price_input").value
     const unft_id = getParams("unft")
+    if(current_username_usd < price){
+        alert("보유 금액을 초과해서 제안할 수 없습니다.")
+        return
+    }
+
     const response = await fetch(`http://127.0.0.1:8000/deal/`, {
         headers: {
             "content-type": "application/json",
