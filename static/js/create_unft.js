@@ -6,6 +6,9 @@ document.getElementById("create_button").addEventListener("click",function(){
 
 // unft 생성하기
 async function handleCreateUnft() {
+  const loader = document.getElementById("page-loader")
+  loader.className += 'show';
+
   const unft_formData = new FormData();
 
   const title = document.getElementById("title").value;
@@ -23,6 +26,7 @@ async function handleCreateUnft() {
   unft_formData.append("price",price);
   unft_formData.append("base_image", basefileField);
   unft_formData.append("style_image", stylefileField);
+
 
   const response = await fetch('http://127.0.0.1:8000/unft/',{
       method:'POST',
@@ -45,6 +49,8 @@ async function handleCreateUnft() {
   .catch(error => {
       alert("U-NFT 생성에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
       console.warn(error.message);
+      loader.classList.remove('show');
+ 
   });
 }
 
