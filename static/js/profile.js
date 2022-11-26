@@ -36,14 +36,14 @@ async function handleProfile(){
         append_unft_card_list(response_json['own_unft'],owner_unft_card_list)
         // 내가만든 작품 리스트
         let creator_unft_card_list = document.getElementById("creator_unft_card_list").querySelector(".row")
-        append_unft_card_list(response_json['create_unft'],creator_unft_card_list)
+        append_unft_card_list1(response_json['create_unft'],creator_unft_card_list)
     }).catch(error => {
         console.warn(error.message)
     });
 }
 
-function append_unft_card_list(dataset,element){
-    element.innerHTML='';
+function append_unft_card_list(dataset, element) {
+    element.innerHTML = '';
     dataset.forEach(data => {
         let new_item = document.createElement('div');
         new_item.className = 'col-lg-3 col-md-4 col-6';
@@ -60,6 +60,9 @@ function append_unft_card_list(dataset,element){
                         <div class="card_content">
                             <p class="unft_card_title item_card_title"><span class="title">${data['title']}</span></p>
                             <p class="unft_card_creator item_card_editor"><span class="creator">${data['creator']}</span></p>
+                            <div class="card_button">
+                                <button type="button" class="unft_card_edit"><a href="/edit_unft.html?unft=${data['id']}">수정</a></button>
+                            </div>
                         </div>
                     </div>
                     <div class="card_footer">
@@ -72,6 +75,82 @@ function append_unft_card_list(dataset,element){
         element.append(new_item);
     });
 }
+
+function append_unft_card_list1(dataset,element){
+    element.innerHTML='';
+    dataset.forEach(data => {
+        let new_item = document.createElement('div');
+        new_item.className = 'col-lg-3 col-md-4 col-6';
+        new_item.innerHTML = `
+            <a href="/unft.html?unft=${data['id']}">
+                <div class='unft_card item_card' id='unft_${data['id']}'>
+                    <div class="card_header list_profile">
+                        <div class="unft_images item_image scale_up">
+                            <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
+                        </div>
+                    ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
+                    </div>
+                    <div class="card_body">
+                        <div class="card_content">
+                            <p class="unft_card_title item_card_title"><span class="title">${data['title']}</span></p>
+                            <p class="unft_card_creator item_card_editor"><span class="creator">${data['creator']}</span></p>
+                            <div class="card_button">
+                                <button type="button" class="unft_card_edit"><a href="/edit_unft.html?unft=${data['id']}">수정</a></button>
+                                <button type="button" class="unft_card_delete" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_footer">
+                        ${data['status'] ? `<p>판매가</p>` : `<p>마지막 거래가</p>`}
+                        <p class="unft_card_price"><span class="price">${insertCommas(data['status'] ? data['price'] : 0)}</span> USD ~ </p>
+                    </div>
+                </div>
+            </a>
+            <div class="modal fade moreModel" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body flex flex_column">
+                            <h5 class="modal_title">정말 삭제하시겠습니까?</h5>
+                        </div>
+                        <div class="modal-footer flex flex_column p-0">
+                            <button type="button" class="btn btn_modal_feedmore btn_delete red" data-bs-dismiss="modal" aria-label="Delete"">Delete</button>
+                            <button type="button" class="btn btn_modal_feedmore btn_close" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        element.append(new_item);
+    });
+}
+$('#delete').on('show.bs.modal', function(event) {
+    target_id = $(event.relatedTarget).closest(".modal").attr("data-target")
+    $(this).find(".btn_delete").attr("onclick","location.href='/"+target_id+"'");
+    });
+async function handleDeleteUnft(el) {
+
+    const response = await fetch('http://127.0.0.1:8000/unft/'+data['id']+'/',{
+        method:'DELETE',
+        
+        headers: {
+            "Authorization":"Bearer " + localStorage.getItem("access"),
+        },
+        
+    }).then(response => {
+        if(!response.ok){
+            throw new Error(`${response.status} 에러가 발생했습니다.`);    
+        }
+        return response;
+    }).then(async result => {
+        alert("U-NFT 삭제에 성공했습니다!")
+        remove_unft = document.getElementById(data['id']);
+        remove_unft.remove();
+    }).catch(async error => {
+        alert("U-NFT 삭제에 실패하였습니다. \n 자세한 내용은 관리자에게 문의해주세요!");
+        console.warn(error.message);
+    });
+}
+
 function insertCommas(num){
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
