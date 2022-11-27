@@ -37,7 +37,7 @@ async function handleCreateUnft() {
 
     const loader = document.getElementById("page-loader")
     loader.className += 'show';
-    const response = await fetch('http://127.0.0.1:8000/unft/',{
+    const response = await fetch('http://43.201.57.228/unft/',{
       method:'POST',
       headers: {
           "Authorization":"Bearer " + localStorage.getItem("access"),

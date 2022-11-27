@@ -16,7 +16,7 @@ async function handleUnftDetail(){
        alert("잘못된 경로입니다.");
        location.href='/';
    }
-   const response = await fetch('http://127.0.0.1:8000/unft/'+url_param+'/',{
+   const response = await fetch('http://43.201.57.228/unft/'+url_param+'/',{
        headers: {
            "content-type": "application/json",
        },
@@ -52,7 +52,7 @@ function append_unft_card_detail(data){
    document.getElementById("creator").value = data['creator'];
    document.getElementById("status").querySelector('option[value=' + data['status'] + ']').setAttribute("selected",'selected');
    document.getElementById("price").value = data['price'];
-   document.querySelector(".item_image img").setAttribute('src', 'http://127.0.0.1:8000/'+data['result_image']+'/');
+   document.querySelector(".item_image img").setAttribute('src', 'http://43.201.57.228/'+data['result_image']+'/');
    toggleStatusUI(data['status'])
 }
 function insertCommas(num){
@@ -92,7 +92,7 @@ async function handleUpdateUnft() {
     unft_formData.append("status",status);
     unft_formData.append("price",price);
     
-    const response = await fetch('http://127.0.0.1:8000/unft/'+url_param+'/',{
+    const response = await fetch('http://43.201.57.228/unft/'+url_param+'/',{
         headers: {
             "Authorization":"Bearer " + localStorage.getItem("access"),
         },

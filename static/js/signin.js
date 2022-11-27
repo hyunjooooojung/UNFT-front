@@ -12,7 +12,7 @@ async function handleSignin() {
         alert("빈칸을 채워주세요.")
     }
     else {
-        const response = await fetch("http://127.0.0.1:8000/users/signin/", {
+        const response = await fetch("http://43.201.57.228/users/signin/", {
             headers: {
                 "content-type": "application/json",
             },
@@ -55,7 +55,7 @@ async function handleSignin() {
 }
 
 async function handleProfile(url_param){    
-    const response = await fetch('http://127.0.0.1:8000/users/'+url_param+'/',{
+    const response = await fetch('http://43.201.57.228/users/'+url_param+'/',{
         headers: {
             "content-type": "application/json",
         },

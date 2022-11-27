@@ -49,7 +49,7 @@ function handleLogout(){
     localStorage.removeItem("username")
     localStorage.removeItem("usd")
     alert("로그아웃 되었습니다! ")
-    location.href = "http://127.0.0.1:5500/index.html";
+    location.href = "/";
 }
 function insertCommas(num){
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");

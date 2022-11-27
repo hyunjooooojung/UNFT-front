@@ -15,7 +15,7 @@ async function handleProfile(){
     if (url_param == undefined){
         url_param = localStorage.getItem("username");
     }
-    const response = await fetch('http://127.0.0.1:8000/users/'+url_param+'/',{
+    const response = await fetch('http://43.201.57.228/users/'+url_param+'/',{
         headers: {
             "content-type": "application/json",
         },
@@ -54,7 +54,7 @@ function append_unft_card_list(dataset, element) {
                     <div class="card_header list_profile">
                         <a href="/unft.html?unft=${data['id']}">
                             <div class="unft_images item_image scale_up">
-                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
+                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://43.201.57.228${data['result_image']}">
                             </div>
                             ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
                         </a>
@@ -91,7 +91,7 @@ function append_unft_card_list1(dataset,element){
                     <div class="card_header list_profile">
                         <a href="/unft.html?unft=${data['id']}">
                             <div class="unft_images item_image scale_up">
-                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://127.0.0.1:8000${data['result_image']}">
+                                <img aria-hidden="false" draggable="false" loading="lazy" src="http://43.201.57.228${data['result_image']}">
                             </div>
                             ${data['status'] ? `<span class="unft_card_status">판매중</span>` : ``}
                         <a href="/unft.html?unft=${data['id']}">
@@ -124,7 +124,7 @@ $('#deleteModal').on('show.bs.modal', function(event) {
 });
 
 async function handleDeleteUnft(unft_id) {
-    const response = await fetch('http://127.0.0.1:8000/unft/'+unft_id+'/',{
+    const response = await fetch('http://43.201.57.228/unft/'+unft_id+'/',{
         method:'DELETE',
         headers: {
             "Authorization":"Bearer " + localStorage.getItem("access"),
@@ -161,7 +161,7 @@ document.getElementById("tab_menu_03").addEventListener("click",function(){
 async function handleDealDetail(){
     let user_id = document.getElementById("profile_user_id").value;
     let url_param = `from_user=${user_id}&to_user=${user_id}`;
-    const response = await fetch('http://127.0.0.1:8000/deal/?'+url_param,{
+    const response = await fetch('http://43.201.57.228/deal/?'+url_param,{
         headers: {
             "content-type": "application/json",
         },
@@ -230,7 +230,7 @@ document.getElementById("tab_menu_04").addEventListener("click",function(){
 async function handleToOfferDetail(){ 
     let user_id = document.getElementById("profile_user_id").value;
     let url_param = `to_user=${user_id}`;
-    const response = await fetch('http://127.0.0.1:8000/deal/?'+url_param,{
+    const response = await fetch('http://43.201.57.228/deal/?'+url_param,{
         headers: {
             "content-type": "application/json",
         },
@@ -297,7 +297,7 @@ async function handleToOfferDetail(){
 async function handleFromOfferDetail(){
     let user_id = document.getElementById("profile_user_id").value;
     let url_param = `from_user=${user_id}`;
-    const response = await fetch('http://127.0.0.1:8000/deal/?'+url_param,{
+    const response = await fetch('http://43.201.57.228/deal/?'+url_param,{
         headers: {
             "content-type": "application/json",
         },
@@ -391,7 +391,7 @@ async function handleFromOfferDetail(){
 
 async function handleDeal(deal_id, status, unft_id){
     if(status === 1){
-        const response = await fetch(`http://127.0.0.1:8000/deal/complete/${deal_id}/`, {
+        const response = await fetch(`http://43.201.57.228/deal/complete/${deal_id}/`, {
             headers: {
                 "content-type": "application/json",
                 "Authorization":"Bearer " + localStorage.getItem("access"),
@@ -417,7 +417,7 @@ async function handleDeal(deal_id, status, unft_id){
             alert(response_json.message)
         }
     }else if (status === 2){
-        const response = await fetch(`http://127.0.0.1:8000/deal/${deal_id}/`, {
+        const response = await fetch(`http://43.201.57.228/deal/${deal_id}/`, {
             headers: {
                 "content-type": "application/json",
                 "Authorization":"Bearer " + localStorage.getItem("access"),

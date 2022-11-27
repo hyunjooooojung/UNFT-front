@@ -24,7 +24,7 @@ async function handleUnftDetail(){
     if (url_param == undefined){
         url_param = localStorage.getItem("unft");
     }
-    const response = await fetch('http://127.0.0.1:8000/unft/'+url_param+'/',{
+    const response = await fetch('http://43.201.57.228/unft/'+url_param+'/',{
         headers: {
             "content-type": "application/json",
         },
@@ -60,7 +60,7 @@ function append_unft_card_detail(data){
     element.querySelector(".owner").parentElement.setAttribute("href","/profile.html?username="+data['owner'])
     element.querySelector(".creator").innerText = data['creator']
     element.querySelector(".creator").parentElement.setAttribute("href","/profile.html?username="+data['creator'])
-    element.querySelector(".item_image img").setAttribute('src', 'http://127.0.0.1:8000'+data['result_image']+'/')
+    element.querySelector(".item_image img").setAttribute('src', 'http://43.201.57.228'+data['result_image']+'/')
 
     if(data['status']){
         element.querySelector(".unft_card_price_field").innerText = "판매가"
@@ -86,7 +86,7 @@ function changeDateTimeFormat(datetime){ // YYYY-MM-DD HH:MM:SS
 // 최근 제안 내역 조회 API
 async function handleOfferDetail(){
     let url_param = window.location.search;
-    const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
+    const response = await fetch('http://43.201.57.228/deal/'+url_param,{
         headers: {
             "content-type": "application/json",
         },
@@ -150,7 +150,7 @@ async function handleOfferDetail(){
 // 최근 거래 내역 조회 API
 async function handleDealDetail(){
     let url_param = window.location.search;
-    const response = await fetch('http://127.0.0.1:8000/deal/'+url_param,{
+    const response = await fetch('http://43.201.57.228/deal/'+url_param,{
         headers: {
             "content-type": "application/json",
         },
@@ -234,7 +234,7 @@ async function handleDeal(){
     let access_token = localStorage.getItem("access")
     let response;
     if (access_token){
-        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+        response = await fetch(`http://43.201.57.228/deal/`, {
             headers: {
                 "content-type": "application/json",
                 "Authorization":"Bearer " + access_token,
@@ -248,7 +248,7 @@ async function handleDeal(){
 
         })
     }else{
-        response = await fetch(`http://127.0.0.1:8000/deal/`, {
+        response = await fetch(`http://43.201.57.228/deal/`, {
             headers: {
                 "content-type": "application/json",
             },

@@ -43,7 +43,7 @@ async function handleSignup() {
         return false;
     }
     else {
-        const response = await fetch("http://127.0.0.1:8000/users/signup/", {
+        const response = await fetch("http://43.201.57.228/users/signup/", {
             headers: {
                 "content-type": "application/json",
             },
@@ -57,7 +57,7 @@ async function handleSignup() {
         })
         if(response.ok){
             alert("회원가입이 완료 되었습니다!")
-            location.href = "http://127.0.0.1:5500/signin.html";
+            location.href = "/signin.html";
         }else{
             alert("회원가입에 실패했습니다. 다시 시도해주세요!");
             console.warn(`${response.status} 에러가 발생했습니다.`)
