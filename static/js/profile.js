@@ -124,7 +124,6 @@ $('#deleteModal').on('show.bs.modal', function(event) {
 });
 
 async function handleDeleteUnft(unft_id) {
-    console.log('http://127.0.0.1:8000/unft/'+unft_id+'/');
     const response = await fetch('http://127.0.0.1:8000/unft/'+unft_id+'/',{
         method:'DELETE',
         headers: {
@@ -242,7 +241,6 @@ async function handleToOfferDetail(){
         }
         return response.json()
     }).then(result => {
-        console.log(result);
         let offer_body = document.getElementById("to_offer_body")
         offer_body.innerHTML="";
         if ("message" in result){
@@ -336,8 +334,9 @@ async function handleFromOfferDetail(){
                     }
                 
                     let new_item = document.createElement("div");
-                    new_item.className = "tr"
-                    new_item.id = "deal_"+deal["price"]
+                    new_item.className = "tr unft"+deal["unft"]
+                    new_item.id = "deal_"+deal["id"]
+                    if(deal["from_user_username"] === localStorage.getItem("username")){
                     new_item.innerHTML = `
                                         <div class="td">
                                             <span>${changeDateTimeFormat(deal["updated_at"])}</span>
@@ -355,10 +354,32 @@ async function handleFromOfferDetail(){
                                             <span>${deal["price"]}</span>
                                         </div>
                                         <div class="td">
-                                            <button type="button" class='btn_deal_approve' onclick='handleDeal(${deal['id']},1)'>승인</button>
-                                            <button type="button" class='btn_deal_reject' onclick='handleDeal(${deal['id']},2)'>거절</button>
+                                            <button type="button" class='btn_deal_approve' onclick='handleDeal(${deal['id']},1,${deal['unft']})'>승인</button>
+                                            <button type="button" class='btn_deal_reject' onclick='handleDeal(${deal['id']},2,${deal['unft']})'>거절</button>
                                         </div>
                                         `
+                    }else{
+                        new_item.innerHTML = `
+                        <div class="td">
+                            <span>${changeDateTimeFormat(deal["updated_at"])}</span>
+                        </div>
+                        <div class="td">
+                            <span>${deal["from_user_username"]}</span>
+                        </div>
+                        <div class="td">
+                            <span>${deal["to_user_username"]}</span>
+                        </div>
+                        <div class="td">
+                            <span>${dealStatus}</span>
+                        </div>
+                        <div class="td">
+                            <span>${deal["price"]}</span>
+                        </div>
+                        <div class="td">
+                            <span>권한없음</span>
+                        </div>
+                        `
+                    }
                     offer_body.append(new_item);
                 };
             });
@@ -368,7 +389,45 @@ async function handleFromOfferDetail(){
     })
 };
 
-function handleDeal(deal_id, status){
-    console.log('승인결과',deal_id,status);
+async function handleDeal(deal_id, status, unft_id){
+    if(status === 1){
+        const response = await fetch(`http://127.0.0.1:8000/deal/complete/${deal_id}/`, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization":"Bearer " + localStorage.getItem("access"),
+            },
+            method: "PUT",
+            body: JSON.stringify({
+                "status":status,
+            })
+        })
+        let response_json = await response.json()
+        if(response.ok){
+            // 거래 성공시 유저 usd 반영 코드
+            localStorage.setItem("usd", response_json['from_user_usd']);
+            let user_usd = localStorage.getItem('usd')
+            document.querySelector(".my_money .money").innerText = `${insertCommas(user_usd)} `
 
+            alert(response_json.message)
+            document.getElementById(`deal_${deal_id}`).remove()
+            document.querySelectorAll(`.unft${unft_id}`).forEach(element => {
+                element.remove()
+            })
+        }else{
+            alert(response_json.message)
+        }
+    }else if (status === 2){
+        const response = await fetch(`http://127.0.0.1:8000/deal/${deal_id}/`, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization":"Bearer " + localStorage.getItem("access"),
+            },
+            method: "PUT",
+            body: JSON.stringify({
+                "status":status,
+            })
+        });
+        alert("제안이 거절되었습니다.")
+        document.getElementById(`deal_${deal_id}`).remove()
+    }
 }
